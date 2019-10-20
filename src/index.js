@@ -9,10 +9,13 @@ const filmNames = [
   `Aviator`
 ];
 
+const onClick = function () {};
+
 const init = () => {
   ReactDOM.render(
       <App
         filmNames={filmNames}
+        onClick={onClick}
       />,
       document.querySelector(`#root`)
   );
