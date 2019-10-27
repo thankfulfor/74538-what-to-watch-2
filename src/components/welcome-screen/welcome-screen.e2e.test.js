@@ -8,7 +8,7 @@ Enzyme.configure({adapter: new Adapter()});
 it(`Компонент WelcomeScreen корректно обрабатывает onClick`, () => {
   const clickHandler = jest.fn();
   const welcomeScreen = shallow(<WelcomeScreen
-    filmNames={[`Название фильма`]}
+    films={[`Название фильма`]}
     onClick={clickHandler}
   />);
 
