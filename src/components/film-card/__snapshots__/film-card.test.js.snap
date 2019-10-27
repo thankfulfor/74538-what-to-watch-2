@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilmCard корректно рендерится после перезапуска 1`] = `
+<article
+  className="small-movie-card catalog__movies-card"
+  onMouseEnter={[Function]}
+>
+  <div
+    className="small-movie-card__image"
+  >
+    <img
+      alt="Fantastic Beasts: The Crimes of Grindelwald"
+      height="175"
+      src="img/we-need-to-talk-about-kevin.jpg"
+      width="280"
+    />
+  </div>
+  <h3
+    className="small-movie-card__title"
+  >
+    <a
+      className="small-movie-card__link"
+      href="movie-page.html"
+    >
+      We need to talk about Kevin
+    </a>
+  </h3>
+</article>
+`;
