@@ -8,6 +8,7 @@ Enzyme.configure({adapter: new Adapter()});
 const film = {
   picture: `img/we-need-to-talk-about-kevin.jpg`,
   name: `We need to talk about Kevin`,
+  preview: `https://upload.wikimedia.org/wikipedia/commons/b/b3/Big_Buck_Bunny_Trailer_400p.ogv`
 };
 
 it(`Компонент FilmCard корректно обрабатывает onHover`, () => {
