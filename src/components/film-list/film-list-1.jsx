@@ -1,6 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import {FilmCard} from '../film-card/film-card.jsx';
+import {connect} from 'react-redux';
 
 export class FilmList extends React.PureComponent {
   constructor(props) {
@@ -18,10 +19,10 @@ export class FilmList extends React.PureComponent {
   }
 
   render() {
-    const {films} = this.props;
+    const {filmCards} = this.props;
     return (
       <div className="catalog__movies-list">{
-        films.map((film, i) => {
+        filmCards.map((film, i) => {
           return (
             <FilmCard onHover={this.hoverHandler} key={`${film.name}-${i}`} film={film} />
           );
@@ -32,5 +33,12 @@ export class FilmList extends React.PureComponent {
 }
 
 FilmList.propTypes = {
-  films: PropTypes.array.isRequired,
+  filmCards: PropTypes.array.isRequired,
 };
+
+
+const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
+  filmCards: state.filmCards,
+});
+
+export default connect(mapStateToProps)(FilmList);
