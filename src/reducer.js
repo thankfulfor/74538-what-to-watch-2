@@ -1,9 +1,7 @@
 import {films} from './mock/films.js';
 
-const Genres = [`All genres`];
-
 export const initialState = {
-  genre: Genres[0],
+  genre: `All genres`,
   filmCards: films,
 };
 
