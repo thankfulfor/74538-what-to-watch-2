@@ -62,7 +62,7 @@ export const WelcomeScreen = (props) => {
       </section>
 
       <div className="page-content">
-        <GenreList films={films} />
+        <GenreList allFilms={films} />
         <footer className="page-footer">
           <div className="logo">
             <a className="logo__link logo__link--light">

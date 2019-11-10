@@ -10,34 +10,13 @@ exports[`Is genre catalog rendered 1`] = `
     Catalog
   </h2>
   <Connect(GenreTab)
-    genres={
-      Array [
-        "All genres",
-        "drama",
-      ]
-    }
+    genres={Array []}
   />
-  <Connect(FilmList)
-    films={
-      Array [
-        Object {
-          "genre": "drama",
-          "name": "We need to talk about Kevin",
-          "previewImage": "img/we-need-to-talk-about-kevin.jpg",
-          "previewVideoLink": "https://upload.wikimedia.org/wikipedia/commons/b/b3/Big_Buck_Bunny_Trailer_400p.ogv",
-        },
-      ]
-    }
+  <FilmList
+    films={Array []}
   />
-  <div
-    className="catalog__more"
-  >
-    <button
-      className="catalog__button"
-      type="button"
-    >
-      Show more
-    </button>
-  </div>
+  <ShowMoreButton
+    onClick={[Function]}
+  />
 </section>
 `;

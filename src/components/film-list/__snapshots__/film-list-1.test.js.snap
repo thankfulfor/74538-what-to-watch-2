@@ -14,6 +14,7 @@ exports[`FilmList корректно рендерится после перез�
     >
       <img
         alt="We need to talk about Kevin"
+        src="img/we-need-to-talk-about-kevin.jpg"
       />
     </div>
     <h3

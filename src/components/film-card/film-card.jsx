@@ -14,11 +14,9 @@ export class FilmCard extends React.PureComponent {
   }
 
   render() {
-    const {film, onHover} = this.props;
+    const {film} = this.props;
 
     const mouseOverHandler = () => {
-      onHover(film);
-
       this.delayShowPreview = setInterval(() => {
         this.setState({
           isPlaying: true
@@ -60,5 +58,4 @@ export class FilmCard extends React.PureComponent {
 
 FilmCard.propTypes = {
   film: PropTypes.object.isRequired,
-  onHover: PropTypes.func.isRequired
 };
