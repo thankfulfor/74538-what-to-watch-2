@@ -10,8 +10,15 @@ const film = {
 };
 
 it(`FilmCard корректно рендерится после перезапуска`, () => {
+  const mouseMoveHandler = jest.fn();
   const tree = renderer
-    .create(<FilmCard key={`${film.name}`} film={film} />)
+    .create(<FilmCard
+      key={`${film.name}`}
+      film={film}
+      isPlaying={false}
+      onMouseEnter={mouseMoveHandler}
+      onMouseLeave={mouseMoveHandler}
+    />)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

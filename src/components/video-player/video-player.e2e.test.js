@@ -10,7 +10,7 @@ const film = {
   previewVideoLink: `https://upload.wikimedia.org/wikipedia/commons/b/b3/Big_Buck_Bunny_Trailer_400p.ogv`
 };
 
-it(`Тест проверяет, что компонента есть два состояния: «воспроизведение» и «пауза».`, () => {
+it(`Тест проверяет, что у компонента есть два состояния: «воспроизведение» и «пауза».`, () => {
   window.HTMLMediaElement.prototype.load = () => { /* do nothing */ };
   window.HTMLMediaElement.prototype.play = () => { /* do nothing */ };
   window.HTMLMediaElement.prototype.pause = () => { /* do nothing */ };
@@ -23,9 +23,9 @@ it(`Тест проверяет, что компонента есть два с�
       />
   );
 
-  expect(videoPlayer.state(`isPlaying`)).toEqual(false);
+  expect(videoPlayer.props().isPlaying).toEqual(false);
 
-  videoPlayer.setState({isPlaying: true});
+  videoPlayer.props().isPlaying = true;
 
-  expect(videoPlayer.state(`isPlaying`)).toEqual(true);
+  expect(videoPlayer.props().isPlaying).toEqual(true);
 });

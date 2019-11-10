@@ -6,9 +6,6 @@ export class VideoPlayer extends React.PureComponent {
     super(props);
 
     this.videoRef = React.createRef();
-    this.state = {
-      isPlaying: props.isPlaying
-    };
   }
 
   componentDidMount() {
