@@ -1,17 +1,28 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import FilmList from '../film-list/film-list-1.jsx';
+import {FilmList} from '../film-list/film-list-1.jsx';
 import GenreTab from '../genre-tab/genre-tab.jsx';
+import {ShowMoreButton} from '../show-more-button/show-more-button.jsx';
 import {connect} from 'react-redux';
+import {ActionCreator} from '../../reducer.js';
 
 export const GenreList = (props) => {
-  const {films} = props;
+  const {allFilms, films, countGenres, onShowMoreButtonClick, countFilmsShow} = props;
 
   const genres = [`All genres`];
 
   const getGenres = () => {
-    films.forEach((film) => (genres.push(film.genre)));
-    return [...new Set(genres)];
+    allFilms.forEach((film) => (genres.push(film.genre)));
+    return [...new Set(genres)].slice(0, countGenres);
+  };
+
+  const showPartOfFilms = () => {
+    return films.slice(0, countFilmsShow);
+  };
+
+  const showMoreButtonClickHandler = (evt) => {
+    evt.preventDefault();
+    onShowMoreButtonClick();
   };
 
   return (
@@ -20,23 +31,34 @@ export const GenreList = (props) => {
 
       <GenreTab genres={getGenres()} />
 
-      <FilmList films={films} />
+      <FilmList films={showPartOfFilms()} />
 
-      <div className="catalog__more">
-        <button className="catalog__button" type="button">Show more</button>
-      </div>
+      <ShowMoreButton onClick={showMoreButtonClickHandler} />
     </section>
   );
 };
 
 GenreList.propTypes = {
+  allFilms: PropTypes.array.isRequired,
   films: PropTypes.array.isRequired,
-  genre: PropTypes.string.isRequired
+  genre: PropTypes.string.isRequired,
+  countGenres: PropTypes.number.isRequired,
+  countFilmsShow: PropTypes.number.isRequired,
+  onShowMoreButtonClick: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
+  films: state.filmCards,
   genre: state.genre,
+  countGenres: state.countGenres,
+  countFilmsShow: state.countFilmsShow,
 });
 
-export default connect(mapStateToProps)(GenreList);
+const mapDispatchToProps = (dispatch) => ({
+  onShowMoreButtonClick: () => {
+    dispatch(ActionCreator.increaseCountFilmsShow());
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(GenreList);
 

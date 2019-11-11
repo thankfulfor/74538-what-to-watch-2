@@ -3,14 +3,15 @@
 exports[`FilmCard корректно рендерится после перезапуска 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
-  onMouseEnter={[Function]}
-  onMouseLeave={[Function]}
+  onMouseEnter={[MockFunction]}
+  onMouseLeave={[MockFunction]}
 >
   <div
     className="small-movie-card__image"
   >
     <img
       alt="We need to talk about Kevin"
+      src="img/we-need-to-talk-about-kevin.jpg"
     />
   </div>
   <h3

@@ -144,7 +144,7 @@ exports[`WelcomeScreen корректно рендерится после пер
     className="page-content"
   >
     <Connect(GenreList)
-      films={
+      allFilms={
         Array [
           Object {
             "name": "We need to talk about Kevin",
