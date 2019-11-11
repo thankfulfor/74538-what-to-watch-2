@@ -11,6 +11,10 @@ const film = {
 };
 
 it(`Тест проверяет, что компонента есть два состояния: «воспроизведение» и «пауза».`, () => {
+  window.HTMLMediaElement.prototype.load = () => { /* do nothing */ };
+  window.HTMLMediaElement.prototype.play = () => { /* do nothing */ };
+  window.HTMLMediaElement.prototype.pause = () => { /* do nothing */ };
+
   const videoPlayer = mount(
       <VideoPlayer
         src={film.previewVideoLink}

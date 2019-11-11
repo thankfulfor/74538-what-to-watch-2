@@ -11,7 +11,7 @@ it(`FilmList корректно рендерится после перезапу
   const tree = renderer
     .create(
         <FilmList
-          films={films}
+          filmCards={films}
         />
     )
     .toJSON();

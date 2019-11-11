@@ -30,8 +30,11 @@
     "node": "10"
   },
   "dependencies": {
+    "enzyme-to-json": "3.4.3",
     "prop-types": "15.7.2",
     "react": "16.10.2",
-    "react-dom": "16.10.2"
+    "react-dom": "16.10.2",
+    "react-redux": "7.1.1",
+    "redux": "4.0.4"
   }
 }
