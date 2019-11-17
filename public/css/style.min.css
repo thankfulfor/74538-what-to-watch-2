@@ -865,11 +865,18 @@ summary {
 
 .player {
   position: fixed;
+  top: 20%;
+  left: 20%;
+  right: 20%;
+  bottom: 20%;
+  z-index: 10
+}
+
+.player-fullscreen {
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 1
 }
 
 .player__video {
@@ -879,6 +886,7 @@ summary {
   font-family: "object-fit:cover";
   object-fit: cover
 }
+
 
 .player__exit {
   display: block;

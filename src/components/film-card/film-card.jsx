@@ -22,9 +22,6 @@ export const FilmCard = (props) => {
           : (<img src={film.previewImage} alt={film.name} />)
         }
       </div>
-      <h3 className="small-movie-card__title">
-        <a className="small-movie-card__link" href="movie-page.html">{film.name}</a>
-      </h3>
     </article>
   );
 };
