@@ -10,7 +10,6 @@ exports[`WelcomeScreen корректно рендерится после пер
     >
       <img
         alt="The Grand Budapest Hotel"
-        src="img/bg-the-grand-budapest-hotel.jpg"
       />
     </div>
     <h1
@@ -70,9 +69,8 @@ exports[`WelcomeScreen корректно рендерится после пер
           className="movie-card__poster"
         >
           <img
-            alt="The Grand Budapest Hotel poster"
+            alt="We need to talk about Kevin"
             height="327"
-            src="img/the-grand-budapest-hotel-poster.jpg"
             width="218"
           />
         </div>
@@ -82,42 +80,22 @@ exports[`WelcomeScreen корректно рендерится после пер
           <h2
             className="movie-card__title"
           >
-            The Grand Budapest Hotel
+            We need to talk about Kevin
           </h2>
           <p
             className="movie-card__meta"
           >
             <span
               className="movie-card__genre"
-            >
-              Drama
-            </span>
+            />
             <span
               className="movie-card__year"
-            >
-              2014
-            </span>
+            />
           </p>
           <div
             className="movie-card__buttons"
           >
-            <button
-              className="btn btn--play movie-card__button"
-              type="button"
-            >
-              <svg
-                height="19"
-                viewBox="0 0 19 19"
-                width="19"
-              >
-                <use
-                  xlinkHref="#play-s"
-                />
-              </svg>
-              <span>
-                Play
-              </span>
-            </button>
+            <WithOpenCloseButtons />
             <button
               className="btn btn--list movie-card__button"
               type="button"

@@ -32,7 +32,6 @@ export class VideoPlayer extends React.PureComponent {
         ref={this.videoRef}
         src={src}
         poster={poster}
-        controls
         style={{width: `100%`, height: `100%`}}
         muted
       />
