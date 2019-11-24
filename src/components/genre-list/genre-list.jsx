@@ -1,24 +1,17 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+
 import {FilmList} from '../film-list/film-list-1.jsx';
 import GenreTab from '../genre-tab/genre-tab.jsx';
 import {ShowMoreButton} from '../show-more-button/show-more-button.jsx';
-import {connect} from 'react-redux';
-import {ActionCreator} from '../../reducer.js';
+
+import {increaseCountFilmsShowAction} from '../../actions/increase-count-films-show.js';
+
+import {getFilteredFilms, getGenres} from '../../selector/selectors.js';
 
 export const GenreList = (props) => {
-  const {allFilms, films, countGenres, onShowMoreButtonClick, countFilmsShow} = props;
-
-  const genres = [`All genres`];
-
-  const getGenres = () => {
-    allFilms.forEach((film) => (genres.push(film.genre)));
-    return [...new Set(genres)].slice(0, countGenres);
-  };
-
-  const showPartOfFilms = () => {
-    return films.slice(0, countFilmsShow);
-  };
+  const {onShowMoreButtonClick, filteredFilms, genres} = props;
 
   const showMoreButtonClickHandler = (evt) => {
     evt.preventDefault();
@@ -29,9 +22,9 @@ export const GenreList = (props) => {
     <section className="catalog">
       <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-      <GenreTab genres={getGenres()} />
+      <GenreTab genres={genres} />
 
-      <FilmList films={showPartOfFilms()} />
+      <FilmList films={filteredFilms} />
 
       <ShowMoreButton onClick={showMoreButtonClickHandler} />
     </section>
@@ -39,24 +32,25 @@ export const GenreList = (props) => {
 };
 
 GenreList.propTypes = {
-  allFilms: PropTypes.array.isRequired,
   films: PropTypes.array.isRequired,
+  filteredFilms: PropTypes.array.isRequired,
   genre: PropTypes.string.isRequired,
-  countGenres: PropTypes.number.isRequired,
   countFilmsShow: PropTypes.number.isRequired,
-  onShowMoreButtonClick: PropTypes.func.isRequired
+  onShowMoreButtonClick: PropTypes.func.isRequired,
+  genres: PropTypes.array.isRequired
 };
 
 const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
-  films: state.filmCards,
+  films: state.films,
   genre: state.genre,
-  countGenres: state.countGenres,
   countFilmsShow: state.countFilmsShow,
+  filteredFilms: getFilteredFilms(state),
+  genres: getGenres(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onShowMoreButtonClick: () => {
-    dispatch(ActionCreator.increaseCountFilmsShow());
+    dispatch(increaseCountFilmsShowAction());
   }
 });
 

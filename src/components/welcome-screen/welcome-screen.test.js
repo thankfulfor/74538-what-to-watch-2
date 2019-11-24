@@ -11,12 +11,19 @@ const films = [{
   name: `We need to talk about Kevin`,
 }];
 
+const promoFilm = {
+  picture: `img/we-need-to-talk-about-kevin.jpg`,
+  name: `We need to talk about Kevin`,
+};
+
 it(`WelcomeScreen корректно рендерится после перезапуска`, () => {
   const clickHandler = function () {};
   const tree = shallow(
       <WelcomeScreen
         films={films}
+        filteredFilms={films}
         onClick={clickHandler}
+        promoFilm={promoFilm}
       />
   );
   expect(toJson(tree)).toMatchSnapshot();

@@ -15,12 +15,15 @@ export const FilmCard = (props) => {
         {isPlaying
           ? (
             <VideoPlayer
-              src={film.previewVideoLink}
-              poster={film.previewImage}
+              src={film.preview_video_link}
+              poster={film.preview_image}
               isPlaying={isPlaying}
             />)
-          : (<img src={film.previewImage} alt={film.name} />)
+          : (<img src={film.preview_image} alt={film.name} />)
         }
+        <h3 className="small-movie-card__title">
+          <a className="small-movie-card__link" href="movie-page.html">{film.name}</a>
+        </h3>
       </div>
     </article>
   );
