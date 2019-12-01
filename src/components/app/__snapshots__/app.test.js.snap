@@ -11,5 +11,11 @@ exports[`App корректно рендерится после перезапу
     ]
   }
   onClick={[Function]}
+  promoFilm={
+    Object {
+      "name": "We need to talk about Kevin",
+      "picture": "img/we-need-to-talk-about-kevin.jpg",
+    }
+  }
 />
 `;

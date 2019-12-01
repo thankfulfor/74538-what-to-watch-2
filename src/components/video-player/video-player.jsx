@@ -6,6 +6,7 @@ export class VideoPlayer extends React.PureComponent {
     super(props);
 
     this.videoRef = React.createRef();
+    this.muted = true;
   }
 
   componentDidMount() {
@@ -14,6 +15,7 @@ export class VideoPlayer extends React.PureComponent {
 
     if (isPlaying) {
       videoElement.play();
+      this.muted = true;
     }
   }
 
@@ -33,7 +35,7 @@ export class VideoPlayer extends React.PureComponent {
         src={src}
         poster={poster}
         style={{width: `100%`, height: `100%`}}
-        muted
+        muted={this.muted}
       />
     );
   }

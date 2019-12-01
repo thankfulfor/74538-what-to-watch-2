@@ -12,7 +12,7 @@ exports[`PlayButton корректно рендерится после пере�
     width="19"
   >
     <use
-      xlinkHref="#play"
+      xlinkHref="#play-s"
     />
   </svg>
   <span>

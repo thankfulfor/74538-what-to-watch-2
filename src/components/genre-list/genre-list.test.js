@@ -11,7 +11,7 @@ const films = [{
   previewVideoLink: `https://upload.wikimedia.org/wikipedia/commons/b/b3/Big_Buck_Bunny_Trailer_400p.ogv`
 }];
 
-const genre = `All genres`;
+const genres = [`All genres`];
 
 Enzyme.configure({adapter: new Adapter()});
 
@@ -20,11 +20,12 @@ it(`Is genre catalog rendered`, () => {
 
   const tree = shallow(
       <GenreList
-        allFilms={films}
+        genres={genres}
+        films={films}
         countFilmsShow={0}
         countGenres={0}
-        films={films}
-        genre={genre}
+        filteredFilms={films}
+        genre={genres[0]}
         onShowMoreButtonClick={clickHandler}
       />);
 
