@@ -15,6 +15,9 @@ import {getFilmListByGenre} from './reducers/get-film-list-by-genre/get-film-lis
 import {increaseCountFilmsShow} from './reducers/increase-count-films-show/increase-count-films-show.js';
 import {loadFilms} from './reducers/load-films/load-films.js';
 import {loadPromo} from './reducers/load-promo/load-promo.js';
+import {setAuthorizationRequired} from './reducers/set-authorization-required/set-authorization-required.js';
+import {updateUserData} from './reducers/update-user-data/update-user-data.js';
+import {setLoggedIn} from './reducers/set-logged-in/set-logged-in.js';
 
 const reducers = combineReducers({
   films: loadFilms,
@@ -22,6 +25,9 @@ const reducers = combineReducers({
   genre: changeFilterByGenre,
   filteredFilms: getFilmListByGenre,
   countFilmsShow: increaseCountFilmsShow,
+  isAuthorizationRequired: setAuthorizationRequired,
+  userData: updateUserData,
+  isLoggedIn: setLoggedIn,
 });
 
 const onClick = function () {};

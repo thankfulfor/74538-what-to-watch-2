@@ -20,6 +20,7 @@ it(`App корректно рендерится после перезапуск�
   const clickHandler = function () {};
   const tree = shallow(
       <App
+        isAuthorizationRequired={false}
         films={films}
         filteredFilms={films}
         onClick={clickHandler}
