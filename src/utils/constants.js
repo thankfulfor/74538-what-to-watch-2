@@ -10,7 +10,13 @@ export const ActionTypes = {
   INCREASE_COUNT_FILMS_SHOW: `INCREASE_COUNT_FILMS_SHOW`,
   LOAD_FILMS: `LOAD_FILMS`,
   LOAD_PROMO: `LOAD_PROMO`,
-  RESET_COUNT_FILMS_SHOW: `RESET_COUNT_FILMS_SHOW`,
+  SET_AUTHORIZATION_REQUIRED: `SET_AUTHORIZATION_REQUIRED`,
+  UPDATE_USER_DATA: `UPDATE_USER_DATA`,
+  SET_LOGGED_IN: `SET_LOGGED_IN`,
+};
+
+export const URLS = {
+  BASE_URL: `https://htmlacademy-react-2.appspot.com/`,
 };
 
 export const initialState = {
@@ -20,5 +26,8 @@ export const initialState = {
   films: [],
   filteredFilms: [],
   promoFilm: {},
-  genres: []
+  genres: [],
+  isAuthorizationRequired: true,
+  userData: {},
+  isLoggedIn: false,
 };

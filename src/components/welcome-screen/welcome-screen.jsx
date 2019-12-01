@@ -1,15 +1,18 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 
 import GenreList from '../genre-list/genre-list.jsx';
 import FullScreenVideoPlayer from '../fullscreen-video-player/full-screen-video-player.jsx';
 import {PlayButton} from '../play-button/play-button.jsx';
 import withOpenCloseButtons from '../../hoc/with-open-close-buttons/with-open-close-buttons.jsx';
 
+import {URLS} from '../../utils/constants.js';
+
 const FullscreenVideoPlayerWithButtonsWrapper = withOpenCloseButtons(FullScreenVideoPlayer, PlayButton);
 
 export const WelcomeScreen = (props) => {
-  const {films, onClick, promoFilm} = props;
+  const {films, onClick, promoFilm, avatarUrl, isLoggedIn} = props;
 
   return (
     <div>
@@ -25,13 +28,16 @@ export const WelcomeScreen = (props) => {
             <a className="logo__link">
               <span className="logo__letter logo__letter--1">W</span>
               <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
+              <span className="logo__letter logo__letter--3">F</span>
             </a>
           </div>
 
           <div className="user-block">
             <div className="user-block__avatar">
-              <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+              {isLoggedIn
+                ? <img src={avatarUrl} alt="User avatar" width="63" height="63" />
+                : <a href="">Sign In</a>
+              }
             </div>
           </div>
         </header>
@@ -89,4 +95,15 @@ WelcomeScreen.propTypes = {
   films: PropTypes.array.isRequired,
   onClick: PropTypes.func.isRequired,
   promoFilm: PropTypes.object.isRequired,
+  avatarUrl: PropTypes.string.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired
 };
+
+const mapStateToProps = (state, ownProps) => {
+  return Object.assign({}, ownProps, {
+    avatarUrl: URLS.BASE_URL + state.userData.avatar_url,
+    isLoggedIn: state.isLoggedIn
+  });
+};
+
+export default connect(mapStateToProps)(WelcomeScreen);

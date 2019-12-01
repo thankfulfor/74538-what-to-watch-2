@@ -10,7 +10,6 @@ const films = [{
 
 describe(`getFilmListByGenreAction работает корректно`, () => {
   it(`getFilmListByGenreAction фильтрует массив фильмов по переданному жанру`, () => {
-    // eslint-disable-next-line no-console
     expect(getFilmListByGenreAction(`Drama`, films))
       .toEqual({
         type: ActionTypes.FILTER_FILMS_BY_GENRE,

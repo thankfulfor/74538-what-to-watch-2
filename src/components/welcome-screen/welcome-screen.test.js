@@ -20,6 +20,8 @@ it(`WelcomeScreen корректно рендерится после перез�
   const clickHandler = function () {};
   const tree = shallow(
       <WelcomeScreen
+        avatarUrl={``}
+        isLoggedIn={false}
         films={films}
         filteredFilms={films}
         onClick={clickHandler}

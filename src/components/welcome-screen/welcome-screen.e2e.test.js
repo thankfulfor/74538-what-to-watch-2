@@ -15,6 +15,8 @@ it(`Компонент WelcomeScreen корректно обрабатывает
   const welcomeScreen = shallow(<WelcomeScreen
     films={[`Название фильма`]}
     promoFilm={promoFilm}
+    avatarUrl={``}
+    isLoggedIn={false}
     onClick={clickHandler}
     filteredFilms={[`Название фильма`]}
   />);
