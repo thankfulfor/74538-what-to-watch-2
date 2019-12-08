@@ -2,29 +2,26 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Operation} from '../../operations/operation.js';
+import {URLS} from '../../utils/constants.js';
+import {Link} from 'react-router-dom';
+import Header from '../header/header.jsx';
 
 export const SignIn = (props) => {
-  const {onSignInFormSubmit} = props;
+  const {onSignInFormSubmit, history} = props;
+
+  const mainPageUrl = URLS.MAIN_PAGE_URL;
 
   const signInFormSubmitHandler = (evt) => {
     evt.preventDefault();
     onSignInFormSubmit(evt.target.userEmail.value, evt.target.userPassword.value);
+    history.push(mainPageUrl);
   };
 
   return (
     <React.Fragment>
       <div className="user-page">
-        <header className="page-header user-page__head">
-          <div className="logo">
-            <a href="main.html" className="logo__link">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">F</span>
-            </a>
-          </div>
 
-          <h1 className="page-title user-page__title">Sign in</h1>
-        </header>
+        <Header title="Sign in" />
 
         <div className="sign-in user-page__content">
           <form action="#" className="sign-in__form" onSubmit={signInFormSubmitHandler}>
@@ -46,11 +43,11 @@ export const SignIn = (props) => {
 
         <footer className="page-footer">
           <div className="logo">
-            <a href="main.html" className="logo__link logo__link--light">
+            <Link to={mainPageUrl} className="logo__link logo__link--light">
               <span className="logo__letter logo__letter--1">W</span>
               <span className="logo__letter logo__letter--2">T</span>
               <span className="logo__letter logo__letter--3">F</span>
-            </a>
+            </Link>
           </div>
 
           <div className="copyright">
@@ -63,7 +60,8 @@ export const SignIn = (props) => {
 };
 
 SignIn.propTypes = {
-  onSignInFormSubmit: PropTypes.func.isRequired
+  onSignInFormSubmit: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired
 };
 
 const mapDispatchToProps = (dispatch) => {

@@ -3,22 +3,22 @@ import {configureAPI} from '../../api';
 import {ActionTypes} from '../../utils/constants.js';
 import {Operation} from '../../operations/operation.js';
 
-describe(`loadPromo работает корректно`, () => {
-  it(`loadPromo корректно посылает запрос к API /films/promo`, function () {
+describe(`loadFavoriteFilms работает корректно`, () => {
+  it(`loadFavoriteFilms корректно посылает запрос к API /favorites`, function () {
     const dispatch = jest.fn();
     const api = configureAPI(dispatch);
     const apiMock = new MockAdapter(api);
-    const promoLoader = Operation.loadPromo();
+    const favoriteFilmsLoader = Operation.loadFavoriteFilms();
 
     apiMock
-      .onGet(`/films/promo`)
+      .onGet(`/favorite`)
       .reply(200, [{fake: true}]);
 
-    return promoLoader(dispatch, jest.fn(), api)
+    return favoriteFilmsLoader(dispatch, jest.fn(), api)
       .then(() => {
-        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
-          type: ActionTypes.LOAD_PROMO,
+          type: ActionTypes.LOAD_FAVORITE_FILMS,
           payload: [{fake: true}],
         });
       });

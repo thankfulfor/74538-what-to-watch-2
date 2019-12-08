@@ -1,14 +1,18 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import {Switch, Route} from 'react-router-dom';
+
 import WelcomeScreen from '../welcome-screen/welcome-screen.jsx';
 import withShowItem from '../../hoc/with-show-item/with-show-item.jsx';
 import SignIn from '../sign-in/sign-in.jsx';
+import MyList from '../my-list/my-list.jsx';
+import {URLS} from '../../utils/constants.js';
 
 const WelcomeScreenWrapped = withShowItem(WelcomeScreen);
 
 export const App = (props) => {
-  const {films, onClick, promoFilm, isAuthorizationRequired} = props;
+  const {films, onClick, promoFilm} = props;
 
   if (films.length === 0 || promoFilm === undefined) {
     return null;
@@ -16,14 +20,15 @@ export const App = (props) => {
 
   return (
     <React.Fragment>
-      {isAuthorizationRequired
-        ? <SignIn />
-        : (<WelcomeScreenWrapped
-          films={films}
-          onClick={onClick}
-          promoFilm={promoFilm}
-        />)
-      }
+      <Switch>
+        <Route
+          exact
+          path={URLS.MAIN_PAGE_URL}
+          render={() => <WelcomeScreenWrapped films={films} onClick={onClick} promoFilm={promoFilm} />}
+        />
+        <Route exact path={URLS.LOGIN_PAGE_URL} component={SignIn} />
+        <Route exact path={URLS.MY_LIST_URL} component={MyList} />
+      </Switch>
     </React.Fragment>
   );
 };
@@ -32,7 +37,6 @@ const mapStateToProps = (state, ownProps) => {
   return Object.assign({}, ownProps, {
     films: state.films,
     promoFilm: state.promoFilm,
-    isAuthorizationRequired: state.isAuthorizationRequired
   });
 };
 
@@ -40,7 +44,6 @@ App.propTypes = {
   films: PropTypes.array.isRequired,
   onClick: PropTypes.func.isRequired,
   promoFilm: PropTypes.object.isRequired,
-  isAuthorizationRequired: PropTypes.bool.isRequired,
 };
 
 export default connect(mapStateToProps)(App);

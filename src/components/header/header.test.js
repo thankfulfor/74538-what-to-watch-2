@@ -1,13 +1,13 @@
 import React from 'react';
-import {SignIn} from './sign-in.jsx';
+import {Header} from './header.jsx';
 import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 Enzyme.configure({adapter: new Adapter()});
 
-it(`SignIn rendered`, () => {
+it(`Header rendered`, () => {
   const historyMock = {push: jest.fn()};
-  const tree = shallow(<SignIn history={historyMock} onSignInFormSubmit={() => {}} />);
+  const tree = shallow(<Header history={historyMock} avatarUrl="" isLoggedIn={false} />);
 
   expect(tree).toMatchSnapshot();
 });

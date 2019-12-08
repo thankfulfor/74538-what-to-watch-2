@@ -13,10 +13,20 @@ export const ActionTypes = {
   SET_AUTHORIZATION_REQUIRED: `SET_AUTHORIZATION_REQUIRED`,
   UPDATE_USER_DATA: `UPDATE_USER_DATA`,
   SET_LOGGED_IN: `SET_LOGGED_IN`,
+  LOAD_FAVORITE_FILMS: `LOAD_FAVORITE_FILMS`,
+  ADD_TO_FAVORITE: `ADD_TO_FAVORITE`,
+  LOAD_IS_FAVORITE: `LOAD_IS_FAVORITE`,
 };
 
 export const URLS = {
   BASE_URL: `https://htmlacademy-react-2.appspot.com/`,
+  WTW_URL: `wtw`,
+  MAIN_PAGE_URL: `/`,
+  LOGIN_PAGE_URL: `/login`,
+  FAVORITE_URL: `favorite`,
+  MY_LIST_URL: `/mylist`,
+  FILMS_URL: `/films`,
+  PROMO_URL: `/films/promo`,
 };
 
 export const initialState = {
@@ -30,4 +40,6 @@ export const initialState = {
   isAuthorizationRequired: true,
   userData: {},
   isLoggedIn: false,
+  favoriteFilms: [],
+  isFavorite: false
 };

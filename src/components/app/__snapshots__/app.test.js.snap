@@ -2,22 +2,38 @@
 
 exports[`App корректно рендерится после перезапуска 1`] = `
 <Fragment>
-  <WithShowItem
-    films={
-      Array [
+  <Switch>
+    <Route
+      exact={true}
+      path="/"
+      render={[Function]}
+    />
+    <Route
+      component={
         Object {
-          "name": "We need to talk about Kevin",
-          "picture": "img/we-need-to-talk-about-kevin.jpg",
-        },
-      ]
-    }
-    onClick={[Function]}
-    promoFilm={
-      Object {
-        "name": "We need to talk about Kevin",
-        "picture": "img/we-need-to-talk-about-kevin.jpg",
+          "$$typeof": Symbol(react.memo),
+          "WrappedComponent": [Function],
+          "compare": null,
+          "displayName": "Connect(SignIn)",
+          "type": [Function],
+        }
       }
-    }
-  />
+      exact={true}
+      path="/login"
+    />
+    <Route
+      component={
+        Object {
+          "$$typeof": Symbol(react.memo),
+          "WrappedComponent": [Function],
+          "compare": null,
+          "displayName": "Connect(MyList)",
+          "type": [Function],
+        }
+      }
+      exact={true}
+      path="/mylist"
+    />
+  </Switch>
 </Fragment>
 `;
