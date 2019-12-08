@@ -9,23 +9,27 @@ exports[`FilmList корректно рендерится после перез�
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
   >
-    <div
-      className="small-movie-card__image"
+    <a
+      href="/films/undefined"
+      onClick={[Function]}
     >
-      <img
-        alt="We need to talk about Kevin"
-      />
-      <h3
-        className="small-movie-card__title"
+      <div
+        className="small-movie-card__image"
       >
-        <a
-          className="small-movie-card__link"
-          href="movie-page.html"
+        <img
+          alt="We need to talk about Kevin"
+        />
+        <h3
+          className="small-movie-card__title"
         >
-          We need to talk about Kevin
-        </a>
-      </h3>
-    </div>
+          <span
+            className="small-movie-card__link"
+          >
+            We need to talk about Kevin
+          </span>
+        </h3>
+      </div>
+    </a>
   </article>
 </div>
 `;

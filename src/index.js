@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 import {compose} from 'recompose';
 import {createStore, applyMiddleware, combineReducers} from 'redux';
 import {Provider} from 'react-redux';
-import {BrowserRouter} from 'react-router-dom';
+import {BrowserRouter, withRouter} from 'react-router-dom';
 import {history} from './history.js';
 
 import App from './components/app/app.jsx';
@@ -20,7 +20,6 @@ import {loadPromo} from './reducers/load-promo/load-promo.js';
 import {updateUserData} from './reducers/update-user-data/update-user-data.js';
 import {setLoggedIn} from './reducers/set-logged-in/set-logged-in.js';
 import {loadFavoriteFilms} from './reducers/load-favorite-films/load-favorite-films.js';
-import {loadIsFavorite} from './reducers/load-is-favorite/load-is-favorite.js';
 
 const reducers = combineReducers({
   films: loadFilms,
@@ -31,10 +30,7 @@ const reducers = combineReducers({
   userData: updateUserData,
   isLoggedIn: setLoggedIn,
   favoriteFilms: loadFavoriteFilms,
-  isFavorite: loadIsFavorite,
 });
-
-const onClick = function () {};
 
 const init = () => {
   const api = configureAPI((...args) => store.dispatch(...args));
@@ -53,10 +49,12 @@ const init = () => {
   store.dispatch(Operation.loadFavoriteFilms());
   // store.subscribe(() => {console.log(store.getState())});
 
+  const AppWrapped = withRouter(App);
+
   ReactDOM.render(
       <Provider store={store}>
         <BrowserRouter history={history}>
-          <App onClick={onClick} />
+          <AppWrapped />
         </BrowserRouter>
       </Provider>,
       document.querySelector(`#root`)

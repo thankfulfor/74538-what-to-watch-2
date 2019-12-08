@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 
 const withShowItem = (Component) => {
   class WithShowItem extends PureComponent {
@@ -43,10 +44,11 @@ const withShowItem = (Component) => {
         />
       );
     }
-
   }
 
-  WithShowItem.propTypes = {};
+  WithShowItem.propTypes = {
+    history: PropTypes.object.isRequired
+  };
 
   return WithShowItem;
 };

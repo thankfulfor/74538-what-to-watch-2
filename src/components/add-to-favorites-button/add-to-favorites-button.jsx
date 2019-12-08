@@ -1,12 +1,21 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import {useHistory} from 'react-router-dom';
 
 import {Operation} from '../../operations/operation.js';
 import {URLS} from '../../utils/constants.js';
 
+import {getIsFavoriteById} from '../../selector/selectors.js';
+
 export const AddToFavoritesButton = (props) => {
-  const {filmId, isFavorite, onFavoriteButtonClick, isLoggedIn, history} = props;
+  const {filmId, isFavorite, onFavoriteButtonClick, isLoggedIn} = props;
+
+  const history = useHistory();
+
+  if (filmId === undefined) {
+    return null;
+  }
 
   const loginPageUrl = URLS.LOGIN_PAGE_URL;
 
@@ -46,13 +55,12 @@ AddToFavoritesButton.propTypes = {
   filmId: PropTypes.number.isRequired,
   onFavoriteButtonClick: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
-  history: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state, ownProps) => {
   return Object.assign({}, ownProps, {
     isLoggedIn: state.isLoggedIn,
-    isFavorite: state.isFavorite
+    isFavorite: getIsFavoriteById(state, ownProps.filmId)
   });
 };
 
@@ -60,6 +68,7 @@ const mapDispatchToProps = (dispatch) => {
   return ({
     onFavoriteButtonClick: (filmId, status) => {
       dispatch(Operation.setFavorite(filmId, status));
+      dispatch(Operation.loadFavoriteFilms());
     }
   });
 };

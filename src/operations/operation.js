@@ -40,15 +40,17 @@ export const Operation = {
         if (response.status === 200) {
           dispatch(loadFavoriteFilmAction(response.data));
         }
+      }).catch((error) => {
+        throw new Error(`${error} при загрузке избранных фильмов`);
       });
   },
   setFavorite: (id, status) => {
-    return (dispatch, _getState, api) => {
+    return (dispatch, getState, api) => {
       return api
         .post(`${URLS.FAVORITE_URL}/${id}/${status}`)
         .then((response) => {
           if (response.status === 200) {
-            dispatch(setFavoriteStatusAction(response.data));
+            dispatch(setFavoriteStatusAction(response.data, getState().films));
             dispatch(loadIsFavoriteAction(response.data.is_favorite));
           }
         });
@@ -61,6 +63,8 @@ export const Operation = {
           dispatch(updateUserDataAction(response.data));
           dispatch(setLoggedInAction(true));
         }
+      }).catch((error) => {
+        throw new Error(`${error} при загрузке статуса авториации`);
       });
   },
 };

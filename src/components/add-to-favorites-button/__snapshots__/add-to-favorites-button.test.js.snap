@@ -1,41 +1,71 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AddToFavoritesButton корректно рендерится после перезапуска 1`] = `
-<Fragment>
-  <div
-    className="visually-hidden"
+<BrowserRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
   >
-    <svg>
-      <symbol
-        id="in-list"
-        viewBox="0 0 18 14"
-      >
-        <path
-          clipRule="evenodd"
-          d="M2.40513 5.35353L6.1818 8.90902L15.5807 0L18 2.80485L6.18935 14L0 8.17346L2.40513 5.35353Z"
-          fill="#EEE5B5"
-          fillRule="evenodd"
-        />
-      </symbol>
-    </svg>
-  </div>
-  <button
-    className="btn btn--list movie-card__button"
-    onClick={[Function]}
-    type="button"
-  >
-    <svg
-      height="20"
-      viewBox="0 0 19 20"
-      width="19"
+    <AddToFavoritesButton
+      filmId={0}
+      isFavorite={false}
+      isLoggedIn={false}
+      onFavoriteButtonClick={[Function]}
     >
-      <use
-        xlinkHref="#add"
-      />
-    </svg>
-    <span>
-      My list
-    </span>
-  </button>
-</Fragment>
+      <div
+        className="visually-hidden"
+      >
+        <svg>
+          <symbol
+            id="in-list"
+            viewBox="0 0 18 14"
+          >
+            <path
+              clipRule="evenodd"
+              d="M2.40513 5.35353L6.1818 8.90902L15.5807 0L18 2.80485L6.18935 14L0 8.17346L2.40513 5.35353Z"
+              fill="#EEE5B5"
+              fillRule="evenodd"
+            />
+          </symbol>
+        </svg>
+      </div>
+      <button
+        className="btn btn--list movie-card__button"
+        onClick={[Function]}
+        type="button"
+      >
+        <svg
+          height="20"
+          viewBox="0 0 19 20"
+          width="19"
+        >
+          <use
+            xlinkHref="#add"
+          />
+        </svg>
+        <span>
+          My list
+        </span>
+      </button>
+    </AddToFavoritesButton>
+  </Router>
+</BrowserRouter>
 `;

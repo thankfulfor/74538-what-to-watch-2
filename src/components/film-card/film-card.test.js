@@ -1,6 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {FilmCard} from './film-card';
+import {BrowserRouter} from 'react-router-dom';
 
 const film = {
   previewImage: `img/we-need-to-talk-about-kevin.jpg`,
@@ -12,13 +13,17 @@ const film = {
 it(`FilmCard корректно рендерится после перезапуска`, () => {
   const mouseMoveHandler = jest.fn();
   const tree = renderer
-    .create(<FilmCard
-      key={`${film.name}`}
-      film={film}
-      isPlaying={false}
-      onMouseEnter={mouseMoveHandler}
-      onMouseLeave={mouseMoveHandler}
-    />)
+    .create(
+        <BrowserRouter>
+          <FilmCard
+            key={`${film.name}`}
+            film={film}
+            isPlaying={false}
+            onMouseEnter={mouseMoveHandler}
+            onMouseLeave={mouseMoveHandler}
+          />
+        </BrowserRouter>
+    )
     .toJSON();
   expect(tree).toMatchSnapshot();
 });
