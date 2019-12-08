@@ -1,14 +1,15 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
 import Header from '../header/header.jsx';
 
 import {FilmList} from '../film-list/film-list-1.jsx';
 import {URLS} from '../../utils/constants.js';
+import {Footer} from '../footer/footer.jsx';
+import {getFilteredFilms} from '../../selector/selectors.js';
 
 export const MyList = (props) => {
-  const {favoriteFilms, history, isLoggedIn} = props;
+  const {favoriteFilms, history, isLoggedIn, similarFilms} = props;
 
   if (favoriteFilms === undefined) {
     return null;
@@ -56,19 +57,9 @@ export const MyList = (props) => {
           <FilmList films={favoriteFilms} />
         </section>
 
-        <footer className="page-footer">
-          <div className="logo">
-            <Link to={URLS.MAIN_PAGE_URL} className="logo__link logo__link--light">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </Link>
-          </div>
+        <FilmList films={similarFilms} />
 
-          <div className="copyright">
-            <p>© 2019 What to watch Ltd.</p>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </React.Fragment>
   );
@@ -77,13 +68,15 @@ export const MyList = (props) => {
 MyList.propTypes = {
   favoriteFilms: PropTypes.array.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
-  history: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired,
+  similarFilms: PropTypes.array.isRequired
 };
 
 const mapStateToProps = (state, ownProps) => {
   return Object.assign({}, ownProps, {
     favoriteFilms: state.favoriteFilms,
-    isLoggedIn: state.isLoggedIn
+    isLoggedIn: state.isLoggedIn,
+    similarFilms: getFilteredFilms(state),
   });
 };
 

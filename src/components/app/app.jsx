@@ -3,33 +3,31 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Switch, Route} from 'react-router-dom';
 
-import WelcomeScreen from '../welcome-screen/welcome-screen.jsx';
-import withShowItem from '../../hoc/with-show-item/with-show-item.jsx';
-import SignIn from '../sign-in/sign-in.jsx';
+import MoviePage from '../movie-page/movie-page.jsx';
 import MyList from '../my-list/my-list.jsx';
+import SignIn from '../sign-in/sign-in.jsx';
+import WelcomeScreen from '../welcome-screen/welcome-screen.jsx';
+
 import {URLS} from '../../utils/constants.js';
+
+import withShowItem from '../../hoc/with-show-item/with-show-item.jsx';
 
 const WelcomeScreenWrapped = withShowItem(WelcomeScreen);
 
 export const App = (props) => {
-  const {films, onClick, promoFilm} = props;
+  const {films, promoFilm} = props;
 
   if (films.length === 0 || promoFilm === undefined) {
     return null;
   }
 
   return (
-    <React.Fragment>
-      <Switch>
-        <Route
-          exact
-          path={URLS.MAIN_PAGE_URL}
-          render={() => <WelcomeScreenWrapped films={films} onClick={onClick} promoFilm={promoFilm} />}
-        />
-        <Route exact path={URLS.LOGIN_PAGE_URL} component={SignIn} />
-        <Route exact path={URLS.MY_LIST_URL} component={MyList} />
-      </Switch>
-    </React.Fragment>
+    <Switch>
+      <Route exact path={URLS.MAIN_PAGE_URL} component={WelcomeScreenWrapped} />
+      <Route exact path={URLS.LOGIN_PAGE_URL} component={SignIn} />
+      <Route exact path={URLS.MY_LIST_URL} component={MyList} />
+      <Route exact path={`${URLS.FILMS_URL}/:id`} component={MoviePage}/>
+    </Switch>
   );
 };
 
@@ -42,7 +40,6 @@ const mapStateToProps = (state, ownProps) => {
 
 App.propTypes = {
   films: PropTypes.array.isRequired,
-  onClick: PropTypes.func.isRequired,
   promoFilm: PropTypes.object.isRequired,
 };
 

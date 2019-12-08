@@ -1,6 +1,5 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import {films} from '../../mock/films.js';
 
 import withControlButtons from '../../hoc/with-controls/with-controls.jsx';
 
@@ -21,8 +20,11 @@ const FullScreenVideoPlayer = (props) => {
     onPlayPauseButtonClick,
     duration,
     currentTime,
-    videoRef
+    videoRef,
+    film
   } = props;
+
+  const {video_link: videoLink, name} = film;
 
   return (
     <React.Fragment>
@@ -63,7 +65,7 @@ const FullScreenVideoPlayer = (props) => {
 
       <div className={`player ${isFullScreen ? `player-fullscreen` : ``}`}>
         <video
-          src={films[0].videoLink}
+          src={videoLink}
           className={`player__video`}
           ref={videoRef}
         />
@@ -95,11 +97,11 @@ const FullScreenVideoPlayer = (props) => {
           <div className="player__controls-row">
             <button onClick={onPlayPauseButtonClick} type="button" className="player__play">
               <svg viewBox="0 0 19 19" width="19" height="19">
-                <use xlinkHref={`${isPlaying ? `#play` : `#pause`}`} />
+                <use xlinkHref={`${isPlaying ? `#pause` : `#play`}`} />
               </svg>
               <span>Play</span>
             </button>
-            <div className="player__name">{films[0].name}</div>
+            <div className="player__name">{name}</div>
 
             <button onClick={onFullScreenButtonClick} type="button" className="player__full-screen">
               <svg viewBox="0 0 27 27" width="27" height="27">
@@ -123,6 +125,7 @@ FullScreenVideoPlayer.propTypes = {
   duration: PropTypes.number.isRequired,
   currentTime: PropTypes.number.isRequired,
   videoRef: PropTypes.shape({current: PropTypes.instanceOf(Element)}),
+  film: PropTypes.object.isRequired,
 };
 
 export {FullScreenVideoPlayer};

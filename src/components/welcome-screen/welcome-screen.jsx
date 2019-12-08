@@ -1,18 +1,20 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import {history} from '../../history.js';
 
 import AddToFavoritesButton from '../add-to-favorites-button/add-to-favorites-button.jsx';
 import FullScreenVideoPlayer from '../fullscreen-video-player/full-screen-video-player.jsx';
 import GenreList from '../genre-list/genre-list.jsx';
 import Header from '../header/header.jsx';
+import {Footer} from '../footer/footer.jsx';
 import {PlayButton} from '../play-button/play-button.jsx';
 
 import withOpenCloseButtons from '../../hoc/with-open-close-buttons/with-open-close-buttons.jsx';
 
 import {URLS} from '../../utils/constants.js';
 
-const FullscreenVideoPlayerWithButtonsWrapper = withOpenCloseButtons(FullScreenVideoPlayer, PlayButton);
+const FullscreenVideoPlayerWithButtonsWrapped = withOpenCloseButtons(FullScreenVideoPlayer, PlayButton);
 
 export const WelcomeScreen = (props) => {
   const {films, promoFilm} = props;
@@ -43,9 +45,9 @@ export const WelcomeScreen = (props) => {
 
               <div className="movie-card__buttons">
 
-                <FullscreenVideoPlayerWithButtonsWrapper />
+                <FullscreenVideoPlayerWithButtonsWrapped film={promoFilm} />
 
-                <AddToFavoritesButton isFavorite={promoFilm.is_favorite} filmId={promoFilm.id} />
+                <AddToFavoritesButton history={history} filmId={promoFilm.id}/>
               </div>
             </div>
           </div>
@@ -54,19 +56,7 @@ export const WelcomeScreen = (props) => {
 
       <div className="page-content">
         <GenreList films={films} />
-        <footer className="page-footer">
-          <div className="logo">
-            <a className="logo__link logo__link--light">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
-
-          <div className="copyright">
-            <p>© 2019 What to watch Ltd.</p>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </div>
   );
@@ -74,15 +64,17 @@ export const WelcomeScreen = (props) => {
 
 WelcomeScreen.propTypes = {
   films: PropTypes.array.isRequired,
-  onClick: PropTypes.func.isRequired,
   promoFilm: PropTypes.object.isRequired,
   avatarUrl: PropTypes.string.isRequired,
+  history: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state, ownProps) => {
   return Object.assign({}, ownProps, {
     avatarUrl: URLS.BASE_URL + state.userData.avatar_url,
-    isLoggedIn: state.isLoggedIn
+    isLoggedIn: state.isLoggedIn,
+    films: state.films,
+    promoFilm: state.promoFilm
   });
 };
 

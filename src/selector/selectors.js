@@ -12,7 +12,6 @@ export const getGenres = createSelector(
     }
 );
 
-
 export const getFilteredFilms = createSelector(
     [(state) => state.films, (state) => state.genre, (state) => state.countFilmsShow],
     (films, filter, counter) => {
@@ -22,3 +21,7 @@ export const getFilteredFilms = createSelector(
           .slice(0, counter);
     }
 );
+
+export const getFilmByIdFromUrl = (state, id) => state.films.find((film) => film.id === +id);
+
+export const getIsFavoriteById = (state, filmId) => state.films.find((film) => film.id === filmId).is_favorite;

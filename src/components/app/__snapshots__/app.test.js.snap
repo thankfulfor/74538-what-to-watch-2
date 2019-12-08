@@ -1,39 +1,50 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`App корректно рендерится после перезапуска 1`] = `
-<Fragment>
-  <Switch>
-    <Route
-      exact={true}
-      path="/"
-      render={[Function]}
-    />
-    <Route
-      component={
-        Object {
-          "$$typeof": Symbol(react.memo),
-          "WrappedComponent": [Function],
-          "compare": null,
-          "displayName": "Connect(SignIn)",
-          "type": [Function],
-        }
+<Switch>
+  <Route
+    component={[Function]}
+    exact={true}
+    path="/"
+  />
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.memo),
+        "WrappedComponent": [Function],
+        "compare": null,
+        "displayName": "Connect(SignIn)",
+        "type": [Function],
       }
-      exact={true}
-      path="/login"
-    />
-    <Route
-      component={
-        Object {
-          "$$typeof": Symbol(react.memo),
-          "WrappedComponent": [Function],
-          "compare": null,
-          "displayName": "Connect(MyList)",
-          "type": [Function],
-        }
+    }
+    exact={true}
+    path="/login"
+  />
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.memo),
+        "WrappedComponent": [Function],
+        "compare": null,
+        "displayName": "Connect(MyList)",
+        "type": [Function],
       }
-      exact={true}
-      path="/mylist"
-    />
-  </Switch>
-</Fragment>
+    }
+    exact={true}
+    path="/mylist"
+  />
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.memo),
+        "WrappedComponent": [Function],
+        "compare": null,
+        "displayName": "Connect(MoviePage)",
+        "type": [Function],
+      }
+    }
+    exact={true}
+    path="/films/:id"
+  />
+</Switch>
 `;

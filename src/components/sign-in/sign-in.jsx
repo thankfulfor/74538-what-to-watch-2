@@ -5,6 +5,7 @@ import {Operation} from '../../operations/operation.js';
 import {URLS} from '../../utils/constants.js';
 import {Link} from 'react-router-dom';
 import Header from '../header/header.jsx';
+import {Footer} from '../footer/footer.jsx';
 
 export const SignIn = (props) => {
   const {onSignInFormSubmit, history} = props;
@@ -18,44 +19,30 @@ export const SignIn = (props) => {
   };
 
   return (
-    <React.Fragment>
-      <div className="user-page">
+    <div className="user-page">
 
-        <Header title="Sign in" />
+      <Header title="Sign in" />
 
-        <div className="sign-in user-page__content">
-          <form action="#" className="sign-in__form" onSubmit={signInFormSubmitHandler}>
-            <div className="sign-in__fields">
-              <div className="sign-in__field">
-                <input required className="sign-in__input" type="email" placeholder="Email address" name="userEmail" id="user-email" />
-                <label className="sign-in__label visually-hidden" htmlFor="user-email">Email address</label>
-              </div>
-              <div className="sign-in__field">
-                <input required className="sign-in__input" type="password" placeholder="Password" name="userPassword" id="user-password" />
-                <label className="sign-in__label visually-hidden" htmlFor="user-password">Password</label>
-              </div>
+      <div className="sign-in user-page__content">
+        <form action="#" className="sign-in__form" onSubmit={signInFormSubmitHandler}>
+          <div className="sign-in__fields">
+            <div className="sign-in__field">
+              <input required className="sign-in__input" type="email" placeholder="Email address" name="userEmail" id="user-email" />
+              <label className="sign-in__label visually-hidden" htmlFor="user-email">Email address</label>
             </div>
-            <div className="sign-in__submit">
-              <button className="sign-in__btn" type="submit">Sign in</button>
+            <div className="sign-in__field">
+              <input required className="sign-in__input" type="password" placeholder="Password" name="userPassword" id="user-password" />
+              <label className="sign-in__label visually-hidden" htmlFor="user-password">Password</label>
             </div>
-          </form>
-        </div>
-
-        <footer className="page-footer">
-          <div className="logo">
-            <Link to={mainPageUrl} className="logo__link logo__link--light">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">F</span>
-            </Link>
           </div>
-
-          <div className="copyright">
-            <p>© 2019 What to watch Ltd.</p>
+          <div className="sign-in__submit">
+            <button className="sign-in__btn" type="submit">Sign in</button>
           </div>
-        </footer>
+        </form>
       </div>
-    </React.Fragment>
+
+      <Footer />
+    </div>
   );
 };
 

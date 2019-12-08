@@ -8,7 +8,6 @@ const FilmCardWrapped = withActiveItem(FilmCard);
 export const FilmList = (props) => {
   const {films} = props;
 
-
   return (
     <div className="catalog__movies-list">
       {films.map((film, i) => <FilmCardWrapped key={`${film.name}-${i}`} film={film} />)}

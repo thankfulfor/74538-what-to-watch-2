@@ -16,6 +16,7 @@ export const ActionTypes = {
   LOAD_FAVORITE_FILMS: `LOAD_FAVORITE_FILMS`,
   ADD_TO_FAVORITE: `ADD_TO_FAVORITE`,
   LOAD_IS_FAVORITE: `LOAD_IS_FAVORITE`,
+  LOAD_FILM: `LOAD_IS_FAVORITE`,
 };
 
 export const URLS = {
@@ -37,9 +38,8 @@ export const initialState = {
   filteredFilms: [],
   promoFilm: {},
   genres: [],
-  isAuthorizationRequired: true,
   userData: {},
   isLoggedIn: false,
   favoriteFilms: [],
-  isFavorite: false
+  filmId: 0,
 };

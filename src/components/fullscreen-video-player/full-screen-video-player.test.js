@@ -6,12 +6,20 @@ import {FullScreenVideoPlayer} from './full-screen-video-player.jsx';
 
 Enzyme.configure({adapter: new Adapter()});
 
+const film = {
+  previewImage: `img/we-need-to-talk-about-kevin.jpg`,
+  name: `We need to talk about Kevin`,
+  genre: `drama`,
+  previewVideoLink: `https://upload.wikimedia.org/wikipedia/commons/b/b3/Big_Buck_Bunny_Trailer_400p.ogv`
+};
+
 it(`Is play button rendered`, () => {
   const clickHandler = jest.fn();
   const mockVideoRef = React.createRef();
 
   const tree = shallow(
       <FullScreenVideoPlayer
+        film={film}
         onExitButtonClick={clickHandler}
         onFullScreenButtonClick={clickHandler}
         isFullScreen={false}
