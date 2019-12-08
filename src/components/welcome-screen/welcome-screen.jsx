@@ -2,9 +2,12 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
-import GenreList from '../genre-list/genre-list.jsx';
+import AddToFavoritesButton from '../add-to-favorites-button/add-to-favorites-button.jsx';
 import FullScreenVideoPlayer from '../fullscreen-video-player/full-screen-video-player.jsx';
+import GenreList from '../genre-list/genre-list.jsx';
+import Header from '../header/header.jsx';
 import {PlayButton} from '../play-button/play-button.jsx';
+
 import withOpenCloseButtons from '../../hoc/with-open-close-buttons/with-open-close-buttons.jsx';
 
 import {URLS} from '../../utils/constants.js';
@@ -12,7 +15,7 @@ import {URLS} from '../../utils/constants.js';
 const FullscreenVideoPlayerWithButtonsWrapper = withOpenCloseButtons(FullScreenVideoPlayer, PlayButton);
 
 export const WelcomeScreen = (props) => {
-  const {films, onClick, promoFilm, avatarUrl, isLoggedIn} = props;
+  const {films, promoFilm} = props;
 
   return (
     <div>
@@ -23,24 +26,7 @@ export const WelcomeScreen = (props) => {
 
         <h1 className="visually-hidden">WTW</h1>
 
-        <header className="page-header movie-card__head" onClick={onClick}>
-          <div className="logo">
-            <a className="logo__link">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">F</span>
-            </a>
-          </div>
-
-          <div className="user-block">
-            <div className="user-block__avatar">
-              {isLoggedIn
-                ? <img src={avatarUrl} alt="User avatar" width="63" height="63" />
-                : <a href="">Sign In</a>
-              }
-            </div>
-          </div>
-        </header>
+        <Header />
 
         <div className="movie-card__wrap">
           <div className="movie-card__info">
@@ -59,12 +45,7 @@ export const WelcomeScreen = (props) => {
 
                 <FullscreenVideoPlayerWithButtonsWrapper />
 
-                <button className="btn btn--list movie-card__button" type="button">
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add" />
-                  </svg>
-                  <span>My list</span>
-                </button>
+                <AddToFavoritesButton isFavorite={promoFilm.is_favorite} filmId={promoFilm.id} />
               </div>
             </div>
           </div>
@@ -96,7 +77,6 @@ WelcomeScreen.propTypes = {
   onClick: PropTypes.func.isRequired,
   promoFilm: PropTypes.object.isRequired,
   avatarUrl: PropTypes.string.isRequired,
-  isLoggedIn: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = (state, ownProps) => {

@@ -4,6 +4,8 @@ import thunk from 'redux-thunk';
 import {compose} from 'recompose';
 import {createStore, applyMiddleware, combineReducers} from 'redux';
 import {Provider} from 'react-redux';
+import {BrowserRouter} from 'react-router-dom';
+import {history} from './history.js';
 
 import App from './components/app/app.jsx';
 import {Operation} from './operations/operation.js';
@@ -15,9 +17,10 @@ import {getFilmListByGenre} from './reducers/get-film-list-by-genre/get-film-lis
 import {increaseCountFilmsShow} from './reducers/increase-count-films-show/increase-count-films-show.js';
 import {loadFilms} from './reducers/load-films/load-films.js';
 import {loadPromo} from './reducers/load-promo/load-promo.js';
-import {setAuthorizationRequired} from './reducers/set-authorization-required/set-authorization-required.js';
 import {updateUserData} from './reducers/update-user-data/update-user-data.js';
 import {setLoggedIn} from './reducers/set-logged-in/set-logged-in.js';
+import {loadFavoriteFilms} from './reducers/load-favorite-films/load-favorite-films.js';
+import {loadIsFavorite} from './reducers/load-is-favorite/load-is-favorite.js';
 
 const reducers = combineReducers({
   films: loadFilms,
@@ -25,9 +28,10 @@ const reducers = combineReducers({
   genre: changeFilterByGenre,
   filteredFilms: getFilmListByGenre,
   countFilmsShow: increaseCountFilmsShow,
-  isAuthorizationRequired: setAuthorizationRequired,
   userData: updateUserData,
   isLoggedIn: setLoggedIn,
+  favoriteFilms: loadFavoriteFilms,
+  isFavorite: loadIsFavorite,
 });
 
 const onClick = function () {};
@@ -42,12 +46,18 @@ const init = () => {
           window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
       )
   );
+
+  store.dispatch(Operation.getLogin());
   store.dispatch(Operation.loadPromo());
   store.dispatch(Operation.loadFilms());
+  store.dispatch(Operation.loadFavoriteFilms());
   // store.subscribe(() => {console.log(store.getState())});
+
   ReactDOM.render(
       <Provider store={store}>
-        <App onClick={onClick} />
+        <BrowserRouter history={history}>
+          <App onClick={onClick} />
+        </BrowserRouter>
       </Provider>,
       document.querySelector(`#root`)
   );

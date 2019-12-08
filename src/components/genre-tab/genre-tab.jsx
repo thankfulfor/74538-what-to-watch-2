@@ -17,7 +17,7 @@ export const GenreTab = (props) => {
       {genres.map((genre, i) => {
         return (
           <li className="catalog__genres-item" key={`${genre}-${i}`}>
-            <a onClick={tabClickHandler} href="#" className="catalog__genres-link">{genre}</a>
+            <span onClick={tabClickHandler} className="catalog__genres-link">{genre}</span>
           </li>
         );
       })}
