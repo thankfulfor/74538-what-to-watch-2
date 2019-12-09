@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilmOverview корректно рендерится после перезапуска 1`] = `
+Array [
+  <div
+    className="movie-rating"
+  >
+    <div
+      className="movie-rating__score"
+    >
+      4
+    </div>
+    <p
+      className="movie-rating__meta"
+    >
+      <span
+        className="movie-rating__level"
+      >
+        Normal
+      </span>
+      <span
+        className="movie-rating__count"
+      >
+        618498
+         ratings
+      </span>
+    </p>
+  </div>,
+  <div
+    className="movie-card__text"
+  >
+    <p>
+      A frontiersman on a fur trading expedition in the 1820s fights for survival after being mauled by a bear and left for dead by members of his own hunting team.
+    </p>
+    <p
+      className="movie-card__director"
+    >
+      <strong>
+        Director: 
+        Alejandro G. Iñárritu
+      </strong>
+    </p>
+    <p
+      className="movie-card__starring"
+    >
+      <strong>
+        Starring:
+        Leonardo DiCaprio
+        Tom Hardy
+        ,
+        Will Poulter
+        ,
+         and other
+      </strong>
+    </p>
+  </div>,
+]
+`;

@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MoviePage корректно рендерится после перезапуска 1`] = `
+<Router
+  history={
+    Object {
+      "action": "POP",
+      "block": [Function],
+      "createHref": [Function],
+      "go": [Function],
+      "goBack": [Function],
+      "goForward": [Function],
+      "length": 1,
+      "listen": [Function],
+      "location": Object {
+        "hash": "",
+        "pathname": "/",
+        "search": "",
+        "state": undefined,
+      },
+      "push": [Function],
+      "replace": [Function],
+    }
+  }
+>
+  <MoviePage
+    film={
+      Object {
+        "background_color": "#92918B",
+        "background_image": "https://htmlacademy-react-2.appspot.com/wtw/static/film/background/Revenant.jpg",
+        "description": "A frontiersman on a fur trading expedition in the 1820s fights for survival after being mauled by a bear and left for dead by members of his own hunting team.",
+        "director": "Alejandro G. Iñárritu",
+        "genre": "Action",
+        "id": 1,
+        "is_favorite": false,
+        "name": "The Revenant",
+        "poster_image": "https://htmlacademy-react-2.appspot.com/wtw/static/film/poster/Revenant.jpg",
+        "preview_image": "https://htmlacademy-react-2.appspot.com/wtw/static/film/preview/revenant.jpg",
+        "preview_video_link": "https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm",
+        "rating": 4,
+        "released": 2015,
+        "run_time": 156,
+        "scores_count": 618498,
+        "starring": Array [
+          "Leonardo DiCaprio",
+          "Tom Hardy",
+          "Will Poulter",
+        ],
+        "video_link": "http://media.xiph.org/mango/tears_of_steel_1080p.webm",
+      }
+    }
+    match={Object {}}
+  />
+</Router>
+`;

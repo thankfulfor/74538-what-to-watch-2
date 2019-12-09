@@ -1,15 +1,15 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import Header from '../header/header.jsx';
 
-import {FilmList} from '../film-list/film-list-1.jsx';
 import {URLS} from '../../utils/constants.js';
+
+import Header from '../header/header.jsx';
+import {FilmList} from '../film-list/film-list-1.jsx';
 import {Footer} from '../footer/footer.jsx';
-import {getFilteredFilms} from '../../selector/selectors.js';
 
 export const MyList = (props) => {
-  const {favoriteFilms, history, isLoggedIn, similarFilms} = props;
+  const {favoriteFilms, history, isLoggedIn} = props;
 
   if (favoriteFilms === undefined) {
     return null;
@@ -56,9 +56,6 @@ export const MyList = (props) => {
 
           <FilmList films={favoriteFilms} />
         </section>
-
-        <FilmList films={similarFilms} />
-
         <Footer />
       </div>
     </React.Fragment>
@@ -69,14 +66,12 @@ MyList.propTypes = {
   favoriteFilms: PropTypes.array.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
   history: PropTypes.object.isRequired,
-  similarFilms: PropTypes.array.isRequired
 };
 
 const mapStateToProps = (state, ownProps) => {
   return Object.assign({}, ownProps, {
     favoriteFilms: state.favoriteFilms,
     isLoggedIn: state.isLoggedIn,
-    similarFilms: getFilteredFilms(state),
   });
 };
 
