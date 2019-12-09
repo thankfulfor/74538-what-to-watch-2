@@ -12,15 +12,12 @@ export const getGenres = createSelector(
     }
 );
 
-export const getFilteredFilms = createSelector(
-    [(state) => state.films, (state) => state.genre, (state) => state.countFilmsShow],
-    (films, filter, counter) => {
-      return filter === initialState.genre
-        ? films.slice(0, counter)
-        : films.filter(({genre}) => genre === filter)
-          .slice(0, counter);
-    }
-);
+export const getFilteredFilms = (films, genreFilter, filmsCount) => {
+  return genreFilter === initialState.genre
+    ? films.slice(0, filmsCount)
+    : films.filter(({genre}) => genre === genreFilter)
+      .slice(0, filmsCount);
+};
 
 export const getFilmByIdFromUrl = (state, id) => state.films.find((film) => film.id === +id);
 

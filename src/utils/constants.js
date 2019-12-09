@@ -1,5 +1,6 @@
 export const CountConstants = {
   COUNT_FILMS_SHOW: 8,
+  COUNT_MORE_LIKE_THIS: 4,
   COUNT_FILMS_SHOW_MORE: 20,
   COUNT_GENRES: 10,
 };
@@ -35,7 +36,6 @@ export const initialState = {
   countFilmsShow: CountConstants.COUNT_FILMS_SHOW,
   countGenres: CountConstants.COUNT_GENRES,
   films: [],
-  filteredFilms: [],
   promoFilm: {},
   genres: [],
   userData: {},
@@ -43,3 +43,5 @@ export const initialState = {
   favoriteFilms: [],
   filmId: 0,
 };
+
+export const tabNames = [`Overview`, `Details`, `Reviews`];

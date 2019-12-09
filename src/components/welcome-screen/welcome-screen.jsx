@@ -19,11 +19,25 @@ const FullscreenVideoPlayerWithButtonsWrapped = withOpenCloseButtons(FullScreenV
 export const WelcomeScreen = (props) => {
   const {films, promoFilm} = props;
 
+  if (promoFilm === undefined || (Object.entries(promoFilm).length === 0 && promoFilm.constructor === Object)) {
+    return null;
+  }
+
+  const {
+    background_image: backgroundImage,
+    background_color: backgroundColor,
+    name,
+    poster_image: posterImage,
+    genre,
+    released,
+    id
+  } = promoFilm;
+
   return (
     <div>
       <section className="movie-card">
         <div className="movie-card__bg">
-          <img src={promoFilm.background_image} alt="The Grand Budapest Hotel" />
+          <img src={backgroundImage} alt={name} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -33,28 +47,28 @@ export const WelcomeScreen = (props) => {
         <div className="movie-card__wrap">
           <div className="movie-card__info">
             <div className="movie-card__poster">
-              <img src={promoFilm.poster_image} alt={promoFilm.name} width="218" height="327" />
+              <img src={posterImage} alt={name} width="218" height="327" />
             </div>
 
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">{promoFilm.name}</h2>
+              <h2 className="movie-card__title">{name}</h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">{promoFilm.genre}</span>
-                <span className="movie-card__year">{promoFilm.released}</span>
+                <span className="movie-card__genre">{genre}</span>
+                <span className="movie-card__year">{released}</span>
               </p>
 
               <div className="movie-card__buttons">
 
                 <FullscreenVideoPlayerWithButtonsWrapped film={promoFilm} />
 
-                <AddToFavoritesButton history={history} filmId={promoFilm.id}/>
+                <AddToFavoritesButton history={history} filmId={id}/>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <div className="page-content">
+      <div className="page-content" style={{backgroundColor: {backgroundColor}}}>
         <GenreList films={films} />
         <Footer />
       </div>

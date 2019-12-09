@@ -13,7 +13,6 @@ import {Operation} from './operations/operation.js';
 import {configureAPI} from './api.js';
 
 import {changeFilterByGenre} from './reducers/change-filter-by-genre/change-filter-by-genre.js';
-import {getFilmListByGenre} from './reducers/get-film-list-by-genre/get-film-list-by-genre.js';
 import {increaseCountFilmsShow} from './reducers/increase-count-films-show/increase-count-films-show.js';
 import {loadFilms} from './reducers/load-films/load-films.js';
 import {loadPromo} from './reducers/load-promo/load-promo.js';
@@ -25,7 +24,6 @@ const reducers = combineReducers({
   films: loadFilms,
   promoFilm: loadPromo,
   genre: changeFilterByGenre,
-  filteredFilms: getFilmListByGenre,
   countFilmsShow: increaseCountFilmsShow,
   userData: updateUserData,
   isLoggedIn: setLoggedIn,
@@ -43,10 +41,10 @@ const init = () => {
       )
   );
 
-  store.dispatch(Operation.getLogin());
   store.dispatch(Operation.loadPromo());
   store.dispatch(Operation.loadFilms());
   store.dispatch(Operation.loadFavoriteFilms());
+  store.dispatch(Operation.getLogin());
   // store.subscribe(() => {console.log(store.getState())});
 
   const AppWrapped = withRouter(App);

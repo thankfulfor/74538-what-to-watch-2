@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilmTabs корректно рендерится после перезапуска 1`] = `
+<ul
+  className="movie-nav__list"
+>
+  <li
+    className="movie-nav__item false"
+    onClick={[MockFunction]}
+  >
+    <a
+      className="movie-nav__link"
+      href="#"
+    >
+      Overview
+    </a>
+  </li>
+  <li
+    className="movie-nav__item false"
+    onClick={[MockFunction]}
+  >
+    <a
+      className="movie-nav__link"
+      href="#"
+    >
+      Details
+    </a>
+  </li>
+  <li
+    className="movie-nav__item false"
+    onClick={[MockFunction]}
+  >
+    <a
+      className="movie-nav__link"
+      href="#"
+    >
+      Reviews
+    </a>
+  </li>
+</ul>
+`;

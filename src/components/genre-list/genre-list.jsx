@@ -9,6 +9,7 @@ import {ShowMoreButton} from '../show-more-button/show-more-button.jsx';
 import {increaseCountFilmsShowAction} from '../../actions/increase-count-films-show.js';
 
 import {getFilteredFilms, getGenres} from '../../selector/selectors.js';
+import {CountConstants} from '../../utils/constants.js';
 
 export const GenreList = (props) => {
   const {onShowMoreButtonClick, filteredFilms, genres} = props;
@@ -44,7 +45,7 @@ const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
   films: state.films,
   genre: state.genre,
   countFilmsShow: state.countFilmsShow,
-  filteredFilms: getFilteredFilms(state),
+  filteredFilms: getFilteredFilms(state.films, state.genre, CountConstants.COUNT_FILMS_SHOW),
   genres: getGenres(state)
 });
 
