@@ -91,6 +91,11 @@ exports[`WelcomeScreen корректно рендерится после пер
   </section>
   <div
     className="page-content"
+    style={
+      Object {
+        "backgroundColor": "undefined",
+      }
+    }
   >
     <Connect(GenreList)
       films={

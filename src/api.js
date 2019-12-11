@@ -21,7 +21,7 @@ export const configureAPI = () => {
     return error;
   };
 
-  // api.interceptors.response.use(onSuccess, onFail);
+  api.interceptors.response.use(onSuccess, onFail);
 
   return api;
 };

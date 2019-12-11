@@ -13,7 +13,7 @@ const userDataPasswordExpected = `password`;
 
 it(`Компонент SignIn корректно обрабатывает onSignInFormSubmit`, () => {
   const submitHandler = jest.fn();
-  const historyMock = {push: jest.fn()};
+  const historyMock = {push: jest.fn(), goBack: jest.fn()};
   const signIn = shallow(<SignIn history={historyMock} onSignInFormSubmit={submitHandler} />);
 
   signIn.find(`form`).simulate(`submit`, {

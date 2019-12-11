@@ -46,5 +46,18 @@ exports[`App корректно рендерится после перезапу
     exact={true}
     path="/films/:id"
   />
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.memo),
+        "WrappedComponent": [Function],
+        "compare": null,
+        "displayName": "Connect(AddReview)",
+        "type": [Function],
+      }
+    }
+    exact={true}
+    path="/films/:id/review"
+  />
 </Switch>
 `;

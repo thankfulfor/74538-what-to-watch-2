@@ -1,6 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 
 import {getFilmByIdFromUrl, getFilteredFilms} from '../../selector/selectors.js';
 
@@ -10,7 +11,7 @@ import Header from '../header/header.jsx';
 import {FilmDetails} from '../../components/film-details/film-details.jsx';
 import {FilmList} from '../film-list/film-list-1.jsx';
 import {FilmOverview} from '../../components/film-overview/film-overview.jsx';
-import {FilmReviews} from '../../components/film-reviews/film-reviews.jsx';
+import FilmReviews from '../../components/film-reviews/film-reviews.jsx';
 import {FilmTabs} from '../film-tabs/film-tabs.jsx';
 import {Footer} from '../footer/footer.jsx';
 import {PlayButton} from '../play-button/play-button.jsx';
@@ -19,13 +20,13 @@ import withOpenCloseButtons from '../../hoc/with-open-close-buttons/with-open-cl
 import withActiveTab from '../../hoc/with-active-tab/with-active-tab.jsx';
 
 import {history} from '../../history.js';
-import {CountConstants} from '../../utils/constants.js';
+import {CountConstants, URLS} from '../../utils/constants.js';
 
 const FullscreenVideoPlayerWithButtonsWrapped = withOpenCloseButtons(FullScreenVideoPlayer, PlayButton);
 const FilmTabsWrapped = withActiveTab(FilmTabs, FilmDetails, FilmOverview, FilmReviews);
 
 export const MoviePage = (props) => {
-  const {film, similarFilms} = props;
+  const {film, similarFilms, isLoggedIn} = props;
 
   if (Object.entries(film).length === 0 && film.constructor === Object) {
     return null;
@@ -37,7 +38,8 @@ export const MoviePage = (props) => {
     genre,
     released,
     poster_image: posterImage,
-    background_color: backgroundColor
+    background_color: backgroundColor,
+    id
   } = film;
 
   const style = {
@@ -69,7 +71,9 @@ export const MoviePage = (props) => {
                 <FullscreenVideoPlayerWithButtonsWrapped film={film} />
                 <AddToFavoritesButton history={history} filmId={film.id}/>
 
-                <a href="add-review.html" className="btn movie-card__button">Add review</a>
+                {isLoggedIn &&
+                  <Link to={`${URLS.FILMS_URL}/${id}/review`} className="btn movie-card__button">Add review</Link>
+                }
               </div>
             </div>
           </div>
@@ -101,13 +105,15 @@ MoviePage.propTypes = {
   film: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired,
   similarFilms: PropTypes.array.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state, {match}) => {
   const film = getFilmByIdFromUrl(state, match.params.id);
   const similarFilms = getFilteredFilms(state.films, film.genre, CountConstants.COUNT_MORE_LIKE_THIS);
+  const isLoggedIn = state.isLoggedIn;
 
-  return {film, similarFilms};
+  return {film, similarFilms, isLoggedIn};
 };
 
 export default connect(mapStateToProps)(MoviePage);

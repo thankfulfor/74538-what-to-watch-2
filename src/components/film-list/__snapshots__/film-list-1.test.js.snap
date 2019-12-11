@@ -1,35 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`FilmList корректно рендерится после перезапуска 1`] = `
-<div
-  className="catalog__movies-list"
+<Router
+  history={
+    Object {
+      "action": "POP",
+      "block": [Function],
+      "createHref": [Function],
+      "go": [Function],
+      "goBack": [Function],
+      "goForward": [Function],
+      "length": 1,
+      "listen": [Function],
+      "location": Object {
+        "hash": "",
+        "pathname": "/",
+        "search": "",
+        "state": undefined,
+      },
+      "push": [Function],
+      "replace": [Function],
+    }
+  }
 >
-  <article
-    className="small-movie-card catalog__movies-card"
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-  >
-    <a
-      href="/films/undefined"
-      onClick={[Function]}
-    >
-      <div
-        className="small-movie-card__image"
-      >
-        <img
-          alt="We need to talk about Kevin"
-        />
-        <h3
-          className="small-movie-card__title"
-        >
-          <span
-            className="small-movie-card__link"
-          >
-            We need to talk about Kevin
-          </span>
-        </h3>
-      </div>
-    </a>
-  </article>
-</div>
+  <FilmList
+    films={
+      Array [
+        Object {
+          "genre": "drama",
+          "name": "We need to talk about Kevin",
+          "previewImage": "img/we-need-to-talk-about-kevin.jpg",
+          "previewVideoLink": "https://upload.wikimedia.org/wikipedia/commons/b/b3/Big_Buck_Bunny_Trailer_400p.ogv",
+        },
+      ]
+    }
+  />
+</Router>
 `;

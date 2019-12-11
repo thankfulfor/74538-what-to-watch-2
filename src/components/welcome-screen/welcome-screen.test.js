@@ -18,8 +18,10 @@ const promoFilm = {
 
 it(`WelcomeScreen корректно рендерится после перезапуска`, () => {
   const clickHandler = function () {};
+  const historyMock = {push: jest.fn()};
   const tree = shallow(
       <WelcomeScreen
+        history={historyMock}
         avatarUrl={``}
         isLoggedIn={false}
         films={films}

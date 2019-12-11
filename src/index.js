@@ -19,6 +19,7 @@ import {loadPromo} from './reducers/load-promo/load-promo.js';
 import {updateUserData} from './reducers/update-user-data/update-user-data.js';
 import {setLoggedIn} from './reducers/set-logged-in/set-logged-in.js';
 import {loadFavoriteFilms} from './reducers/load-favorite-films/load-favorite-films.js';
+import {getReviews} from './reducers/get-reviews/get-reviews.js';
 
 const reducers = combineReducers({
   films: loadFilms,
@@ -28,6 +29,7 @@ const reducers = combineReducers({
   userData: updateUserData,
   isLoggedIn: setLoggedIn,
   favoriteFilms: loadFavoriteFilms,
+  reviews: getReviews,
 });
 
 const init = () => {

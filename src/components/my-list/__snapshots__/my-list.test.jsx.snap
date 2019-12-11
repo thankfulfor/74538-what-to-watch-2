@@ -122,7 +122,6 @@ exports[`MyList корректно рендерится после переза�
         films={Array []}
       />
     </section>
-    <FilmList />
     <Footer />
   </div>
 </Fragment>

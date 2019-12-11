@@ -30,6 +30,16 @@ const withActiveItem = (Component) => {
       clearInterval(this.delayShowPreview);
     }
 
+    componentDidMount() {
+      document.addEventListener(`mouseOver`, this.mouseOverHandler);
+      document.addEventListener(`mouseLeave`, this.mouseLeaveHandler);
+    }
+
+    componentWillUnmount() {
+      document.removeEventListener(`mouseOver`, this.mouseOverHandler);
+      document.removeEventListener(`mouseLeave`, this.mouseLeaveHandler);
+    }
+
     render() {
       return <Component
         {...this.props}

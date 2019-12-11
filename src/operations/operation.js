@@ -4,6 +4,7 @@ import {updateUserDataAction} from '../actions/update-user-data.js';
 import {setLoggedInAction} from '../actions/set-logged-in.js';
 import {loadFavoriteFilmAction} from '../actions/load-favorite-films.js';
 import {loadIsFavoriteAction} from '../actions/load-is-favorite-action.js';
+import {getReviewsAction} from '../actions/get-reviews-action.js';
 
 import {URLS} from '../utils/constants.js';
 import {setFavoriteStatusAction} from '../actions/set-favorite-status.js';
@@ -65,6 +66,29 @@ export const Operation = {
         }
       }).catch((error) => {
         throw new Error(`${error} при загрузке статуса авториации`);
+      });
+  },
+  postComments: (id, rating, text) => {
+    return (dispatch, _getState, api) => {
+      return api
+        .post(`${URLS.POST_REVIEW}/${id}`, {rating, text})
+        .then((response) => {
+          if (response.status === 200) {
+            dispatch(getReviewsAction(response.data));
+          }
+        }).catch((error) => {
+          throw new Error(`${error} при загрузке отзывов`);
+        });
+    };
+  },
+  getReviews: (id) => (dispatch, _getState, api) => {
+    return api.get(`${URLS.POST_REVIEW}/${id}`)
+      .then((response) => {
+        if (response.status === 200) {
+          dispatch(getReviewsAction(response.data));
+        }
+      }).catch((error) => {
+        throw new Error(`${error} при загрузке отзывов`);
       });
   },
 };
