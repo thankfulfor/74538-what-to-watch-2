@@ -33,6 +33,10 @@ export const WelcomeScreen = (props) => {
     id
   } = promoFilm;
 
+  const style = {
+    backgroundColor: `${backgroundColor}`,
+  };
+
   return (
     <div>
       <section className="movie-card">
@@ -68,7 +72,7 @@ export const WelcomeScreen = (props) => {
         </div>
       </section>
 
-      <div className="page-content" style={{backgroundColor: {backgroundColor}}}>
+      <div className="page-content" style={style}>
         <GenreList films={films} />
         <Footer />
       </div>

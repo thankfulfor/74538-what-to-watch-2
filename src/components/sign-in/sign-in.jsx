@@ -2,19 +2,16 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Operation} from '../../operations/operation.js';
-import {URLS} from '../../utils/constants.js';
 import Header from '../header/header.jsx';
 import {Footer} from '../footer/footer.jsx';
 
 export const SignIn = (props) => {
   const {onSignInFormSubmit, history} = props;
 
-  const mainPageUrl = URLS.MAIN_PAGE_URL;
-
   const signInFormSubmitHandler = (evt) => {
     evt.preventDefault();
     onSignInFormSubmit(evt.target.userEmail.value, evt.target.userPassword.value);
-    history.push(mainPageUrl);
+    history.goBack();
   };
 
   return (

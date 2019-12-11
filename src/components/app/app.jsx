@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Switch, Route} from 'react-router-dom';
 
+import AddReview from '../add-review/add-review.jsx';
 import MoviePage from '../movie-page/movie-page.jsx';
 import MyList from '../my-list/my-list.jsx';
 import SignIn from '../sign-in/sign-in.jsx';
@@ -27,6 +28,7 @@ export const App = (props) => {
       <Route exact path={URLS.LOGIN_PAGE_URL} component={SignIn} />
       <Route exact path={URLS.MY_LIST_URL} component={MyList} />
       <Route exact path={`${URLS.FILMS_URL}/:id`} component={MoviePage}/>
+      <Route exact path={URLS.ADD_REVIEW_PAGE_URL} component={AddReview}/>
     </Switch>
   );
 };

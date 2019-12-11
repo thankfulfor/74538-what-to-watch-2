@@ -201,7 +201,8 @@ summary {
 }
 
 .add-review__text {
-  background: #e8c3c4;
+  background: #FFF;
+  opacity: 0.4;
   border-radius: 8px
 }
 

@@ -18,6 +18,7 @@ export const ActionTypes = {
   ADD_TO_FAVORITE: `ADD_TO_FAVORITE`,
   LOAD_IS_FAVORITE: `LOAD_IS_FAVORITE`,
   LOAD_FILM: `LOAD_IS_FAVORITE`,
+  LOAD_REVIEWS: `LOAD_REVIEWS`,
 };
 
 export const URLS = {
@@ -29,6 +30,8 @@ export const URLS = {
   MY_LIST_URL: `/mylist`,
   FILMS_URL: `/films`,
   PROMO_URL: `/films/promo`,
+  ADD_REVIEW_PAGE_URL: `/films/:id/review`,
+  POST_REVIEW: `/comments`,
 };
 
 export const initialState = {
@@ -42,6 +45,7 @@ export const initialState = {
   isLoggedIn: false,
   favoriteFilms: [],
   filmId: 0,
+  reviews: []
 };
 
 export const tabNames = [`Overview`, `Details`, `Reviews`];
