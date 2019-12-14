@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Is genre catalog rendered 1`] = `
+exports[`GenreList рендерится корректно 1`] = `
 <section
   className="catalog"
 >

@@ -16,7 +16,7 @@ export const FilmDetails = (props) => {
         <p className="movie-card__details-item">
           <strong className="movie-card__details-name">Starring</strong>
           <span className="movie-card__details-value">
-            {starring.map((star, i) => <React.Fragment key={`${star}-${i}`}>{star}{<br />}</React.Fragment>)}
+            {starring.map((star, i) => <React.Fragment key={`${star}-${i}`}>{star}<br /></React.Fragment>)}
           </span>
         </p>
       </div>

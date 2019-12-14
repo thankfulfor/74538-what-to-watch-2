@@ -15,7 +15,7 @@ it(`AddToFavoritesButton корректно рендерится после пе
         <AddToFavoritesButton
           filmId={0}
           isFavorite={false}
-          isLoggedIn={false}
+          userData={{}}
           onFavoriteButtonClick={clickHandler}
         />
       </BrowserRouter>);

@@ -22,7 +22,7 @@ it(`AddReview корректно рендерится после перезап�
         avatarUrl={``}
         film={film}
         history={historyMock}
-        isLoggedIn={true}
+        userData={{}}
         onAddReviewSubmit={clickHandler}
       />
   );

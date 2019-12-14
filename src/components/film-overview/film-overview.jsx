@@ -39,8 +39,12 @@ export const FilmOverview = (props) => {
 
         <p className="movie-card__starring">
           <strong>
-            Starring:
-            {starring.map((star, i) => <React.Fragment key={`${star}-${i}`}>{star}{!!i && `,`}</React.Fragment>)} and other
+            Starring:{` `}
+            Starring:{` `}
+            {starring
+              .map((star, i) => <React.Fragment key={`${star}-${i}`}>{star}</React.Fragment>)
+              .reduce((prev, curr) => [prev, `, `, curr])
+            } and other
           </strong>
         </p>
       </div>

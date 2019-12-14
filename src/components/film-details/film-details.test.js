@@ -4,15 +4,16 @@ import {FilmDetails} from './film-details.jsx';
 import {BrowserRouter} from 'react-router-dom';
 
 const film = {
-  "genre": `Action`,
-  "released": 2015,
-  "director": `Alejandro G. Iñárritu`,
-  "starring": [
+  genre: `Action`,
+  released: 2015,
+  director: `Alejandro G. Iñárritu`,
+  starring: [
     `Leonardo DiCaprio`,
     `Tom Hardy`,
     `Will Poulter`
   ],
-  "run_time": 156,
+  // eslint-disable-next-line camelcase
+  run_time: 156,
 };
 
 it(`FilmDetails корректно рендерится после перезапуска`, () => {

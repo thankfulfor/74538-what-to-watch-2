@@ -23,7 +23,6 @@ it(`WelcomeScreen корректно рендерится после перез�
       <WelcomeScreen
         history={historyMock}
         avatarUrl={``}
-        isLoggedIn={false}
         films={films}
         filteredFilms={films}
         onClick={clickHandler}

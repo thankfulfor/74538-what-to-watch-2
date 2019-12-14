@@ -26,7 +26,7 @@ exports[`App корректно рендерится после перезапу
         "$$typeof": Symbol(react.memo),
         "WrappedComponent": [Function],
         "compare": null,
-        "displayName": "Connect(MyList)",
+        "displayName": "Connect(WithAuth)",
         "type": [Function],
       }
     }
@@ -52,7 +52,7 @@ exports[`App корректно рендерится после перезапу
         "$$typeof": Symbol(react.memo),
         "WrappedComponent": [Function],
         "compare": null,
-        "displayName": "Connect(AddReview)",
+        "displayName": "Connect(WithAuth)",
         "type": [Function],
       }
     }

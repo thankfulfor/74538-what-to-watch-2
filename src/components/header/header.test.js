@@ -5,9 +5,9 @@ import Adapter from 'enzyme-adapter-react-16';
 
 Enzyme.configure({adapter: new Adapter()});
 
-it(`Header rendered`, () => {
+it(`Header рендерится корректно`, () => {
   const historyMock = {push: jest.fn()};
-  const tree = shallow(<Header history={historyMock} avatarUrl="" isLoggedIn={false} />);
+  const tree = shallow(<Header history={historyMock} avatarUrl="" userData={{}} />);
 
   expect(tree).toMatchSnapshot();
 });

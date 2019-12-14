@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {changeFilterByGenreAction} from '../../actions/change-filter-by-genre.js';
 import {getFilmListByGenreAction} from '../../actions/get-film-list-by-genre.js';
+import {setCountFilmsShowAction} from '../../actions/set-count-films-show.js';
 
 export const GenreTab = (props) => {
-  const {genres, onTabClick} = props;
+  const {genres, onTabClick, genre} = props;
 
   const tabClickHandler = (evt) => {
     evt.preventDefault();
@@ -14,10 +15,10 @@ export const GenreTab = (props) => {
 
   return (
     <ul className="catalog__genres-list">
-      {genres.map((genre, i) => {
+      {genres.map((genreItem, i) => {
         return (
-          <li className="catalog__genres-item" key={`${genre}-${i}`}>
-            <span onClick={tabClickHandler} className="catalog__genres-link">{genre}</span>
+          <li className={`catalog__genres-item ${genreItem === genre && `catalog__genres-item--active`}`} key={`${genreItem}-${i}`}>
+            <span onClick={tabClickHandler} className="catalog__genres-link">{genreItem}</span>
           </li>
         );
       })}
@@ -27,6 +28,7 @@ export const GenreTab = (props) => {
 
 GenreTab.propTypes = {
   genres: PropTypes.array.isRequired,
+  genre: PropTypes.string.isRequired,
   onTabClick: PropTypes.func.isRequired
 };
 
@@ -39,6 +41,7 @@ const mapDispatchToProps = (dispatch) => {
     onTabClick: (genre) => {
       dispatch(changeFilterByGenreAction(genre));
       dispatch(getFilmListByGenreAction(genre));
+      dispatch(setCountFilmsShowAction());
     }
   });
 };

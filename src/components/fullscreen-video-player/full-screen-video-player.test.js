@@ -13,7 +13,7 @@ const film = {
   previewVideoLink: `https://upload.wikimedia.org/wikipedia/commons/b/b3/Big_Buck_Bunny_Trailer_400p.ogv`
 };
 
-it(`Is play button rendered`, () => {
+it(`FullScreenVideoPlayer рендерится корректно`, () => {
   const clickHandler = jest.fn();
   const mockVideoRef = React.createRef();
 

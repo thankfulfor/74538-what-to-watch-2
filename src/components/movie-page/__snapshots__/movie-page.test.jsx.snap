@@ -50,6 +50,8 @@ exports[`MoviePage корректно рендерится после перез
       }
     }
     match={Object {}}
+    similarFilms={Array []}
+    userData={Object {}}
   />
 </Router>
 `;

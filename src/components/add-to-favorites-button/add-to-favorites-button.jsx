@@ -3,13 +3,15 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 
+import {isObjectEmpty} from '../../utils/is-object-empty.js';
+
 import {Operation} from '../../operations/operation.js';
 import {URLS} from '../../utils/constants.js';
 
 import {getIsFavoriteById} from '../../selector/selectors.js';
 
 export const AddToFavoritesButton = (props) => {
-  const {filmId, isFavorite, onFavoriteButtonClick, isLoggedIn} = props;
+  const {filmId, isFavorite, onFavoriteButtonClick, userData} = props;
 
   const history = useHistory();
 
@@ -20,10 +22,10 @@ export const AddToFavoritesButton = (props) => {
   const loginPageUrl = URLS.LOGIN_PAGE_URL;
 
   const favoriteButtonClickHandler = () => {
-    if (isLoggedIn) {
-      onFavoriteButtonClick(filmId, +!isFavorite);
-    } else {
+    if (isObjectEmpty(userData)) {
       history.push(loginPageUrl);
+    } else {
+      onFavoriteButtonClick(filmId, +!isFavorite);
     }
   };
 
@@ -54,12 +56,12 @@ AddToFavoritesButton.propTypes = {
   isFavorite: PropTypes.bool.isRequired,
   filmId: PropTypes.number.isRequired,
   onFavoriteButtonClick: PropTypes.func.isRequired,
-  isLoggedIn: PropTypes.bool.isRequired,
+  userData: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state, ownProps) => {
   return Object.assign({}, ownProps, {
-    isLoggedIn: state.isLoggedIn,
+    userData: state.userData,
     isFavorite: getIsFavoriteById(state, ownProps.filmId)
   });
 };

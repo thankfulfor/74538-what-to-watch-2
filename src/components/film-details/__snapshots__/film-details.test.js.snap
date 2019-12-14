@@ -55,7 +55,7 @@ exports[`FilmDetails корректно рендерится после пере
       <span
         className="movie-card__details-value"
       >
-        2h : 36m
+        2h:36m
       </span>
     </p>
     <p

@@ -15,7 +15,7 @@ const genres = [`All genres`];
 
 Enzyme.configure({adapter: new Adapter()});
 
-it(`Is genre catalog rendered`, () => {
+it(`GenreList рендерится корректно`, () => {
   const clickHandler = jest.fn();
 
   const tree = shallow(

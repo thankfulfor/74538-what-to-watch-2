@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ShowMoreButton rendered 1`] = `ShallowWrapper {}`;
+exports[`ShowMoreButton рендерится корректно 1`] = `ShallowWrapper {}`;

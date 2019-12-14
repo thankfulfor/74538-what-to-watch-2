@@ -3,15 +3,17 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
+import {isObjectEmpty} from '../../utils/is-object-empty.js';
+
 import {getFilmByIdFromUrl, getFilteredFilms} from '../../selector/selectors.js';
 
 import AddToFavoritesButton from '../add-to-favorites-button/add-to-favorites-button.jsx';
+import FilmReviews from '../../components/film-reviews/film-reviews.jsx';
 import FullScreenVideoPlayer from '../fullscreen-video-player/full-screen-video-player.jsx';
 import Header from '../header/header.jsx';
 import {FilmDetails} from '../../components/film-details/film-details.jsx';
 import {FilmList} from '../film-list/film-list-1.jsx';
 import {FilmOverview} from '../../components/film-overview/film-overview.jsx';
-import FilmReviews from '../../components/film-reviews/film-reviews.jsx';
 import {FilmTabs} from '../film-tabs/film-tabs.jsx';
 import {Footer} from '../footer/footer.jsx';
 import {PlayButton} from '../play-button/play-button.jsx';
@@ -26,9 +28,9 @@ const FullscreenVideoPlayerWithButtonsWrapped = withOpenCloseButtons(FullScreenV
 const FilmTabsWrapped = withActiveTab(FilmTabs, FilmDetails, FilmOverview, FilmReviews);
 
 export const MoviePage = (props) => {
-  const {film, similarFilms, isLoggedIn} = props;
+  const {film, similarFilms, userData} = props;
 
-  if (Object.entries(film).length === 0 && film.constructor === Object) {
+  if (isObjectEmpty(film)) {
     return null;
   }
 
@@ -71,7 +73,7 @@ export const MoviePage = (props) => {
                 <FullscreenVideoPlayerWithButtonsWrapped film={film} />
                 <AddToFavoritesButton history={history} filmId={film.id}/>
 
-                {isLoggedIn &&
+                {!(Object.entries(userData).length === 0 && userData.constructor === Object) &&
                   <Link to={`${URLS.FILMS_URL}/${id}/review`} className="btn movie-card__button">Add review</Link>
                 }
               </div>
@@ -105,15 +107,15 @@ MoviePage.propTypes = {
   film: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired,
   similarFilms: PropTypes.array.isRequired,
-  isLoggedIn: PropTypes.bool.isRequired,
+  userData: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state, {match}) => {
   const film = getFilmByIdFromUrl(state, match.params.id);
   const similarFilms = getFilteredFilms(state.films, film.genre, CountConstants.COUNT_MORE_LIKE_THIS);
-  const isLoggedIn = state.isLoggedIn;
+  const userData = state.userData;
 
-  return {film, similarFilms, isLoggedIn};
+  return {film, similarFilms, userData};
 };
 
 export default connect(mapStateToProps)(MoviePage);

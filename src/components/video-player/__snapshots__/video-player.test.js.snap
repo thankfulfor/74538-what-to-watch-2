@@ -2,7 +2,6 @@
 
 exports[`VideoPlayer корректно рендерится после перезапуска 1`] = `
 <video
-  muted={true}
   poster="img/we-need-to-talk-about-kevin.jpg"
   src="https://upload.wikimedia.org/wikipedia/commons/b/b3/Big_Buck_Bunny_Trailer_400p.ogv"
   style={

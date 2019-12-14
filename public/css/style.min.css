@@ -373,7 +373,8 @@ summary {
 
 .catalog__genres-item {
   margin-right: 20px;
-  margin-bottom: 20px
+  margin-bottom: 20px;
+  cursor: pointer;
 }
 
 .catalog__genres-item--active .catalog__genres-link {
@@ -398,7 +399,8 @@ summary {
   position: relative;
   padding-bottom: 15px;
   -webkit-transition: font-weight;
-  transition: font-weight
+  transition: font-weight;
+  cursor: pointer;
 }
 
 .catalog__genres-link::after {
@@ -467,7 +469,8 @@ summary {
   text-align: center;
   font-size: 14px;
   line-height: 16px;
-  color: #54503e
+  color: #54503e;
+  margin-top: 10px;
 }
 
 .copyright p, .sign-in__message p {
@@ -862,6 +865,12 @@ summary {
   color: #dfcf77;
   font-weight: 300;
   margin: 0 auto
+}
+
+.page-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .player {

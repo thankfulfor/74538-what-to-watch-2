@@ -14,20 +14,22 @@ export const FilmReviews = (props) => {
   return (
     <div className="movie-card__reviews movie-card__row">
       <div className="movie-card__reviews-col">
-        {reviews.map((review) =>
-          <div className="review" key={review.user.name}>
-            <blockquote className="review__quote">
-              <p className="review__text">{review.comment}</p>
+        {reviews.length === 0
+          ? <p className="review__text">There is no reviews. Be the first to add one.</p>
+          : reviews.map((review) =>
+            <div className="review" key={review.user.name}>
+              <blockquote className="review__quote">
+                <p className="review__text">{review.comment}</p>
 
-              <footer className="review__details">
-                <cite className="review__author">{review.user.name}</cite>
-                <time className="review__date" dateTime="2016-12-24">{formatDate(review.date)}</time>
-              </footer>
-            </blockquote>
+                <footer className="review__details">
+                  <cite className="review__author">{review.user.name}</cite>
+                  <time className="review__date" dateTime="2016-12-24">{formatDate(review.date)}</time>
+                </footer>
+              </blockquote>
 
-            <div className="review__rating">{review.rating}</div>
-          </div>
-        )
+              <div className="review__rating">{review.rating}</div>
+            </div>
+          )
         }
       </div>
     </div>

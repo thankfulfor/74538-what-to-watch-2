@@ -8,7 +8,7 @@ export const CountConstants = {
 export const ActionTypes = {
   CHANGE_FILTER_BY_GENRE: `CHANGE_FILTER_BY_GENRE`,
   FILTER_FILMS_BY_GENRE: `FILTER_FILMS_BY_GENRE`,
-  INCREASE_COUNT_FILMS_SHOW: `INCREASE_COUNT_FILMS_SHOW`,
+  SET_COUNT_FILMS_SHOW: `SET_COUNT_FILMS_SHOW`,
   LOAD_FILMS: `LOAD_FILMS`,
   LOAD_PROMO: `LOAD_PROMO`,
   SET_AUTHORIZATION_REQUIRED: `SET_AUTHORIZATION_REQUIRED`,
@@ -30,6 +30,7 @@ export const URLS = {
   MY_LIST_URL: `/mylist`,
   FILMS_URL: `/films`,
   PROMO_URL: `/films/promo`,
+  FILM_PAGE_URL: `/films/:id`,
   ADD_REVIEW_PAGE_URL: `/films/:id/review`,
   POST_REVIEW: `/comments`,
 };
@@ -42,7 +43,6 @@ export const initialState = {
   promoFilm: {},
   genres: [],
   userData: {},
-  isLoggedIn: false,
   favoriteFilms: [],
   filmId: 0,
   reviews: []
