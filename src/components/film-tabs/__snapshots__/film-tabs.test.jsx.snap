@@ -8,34 +8,31 @@ exports[`FilmTabs корректно рендерится после перез�
     className="movie-nav__item false"
     onClick={[MockFunction]}
   >
-    <a
+    <span
       className="movie-nav__link"
-      href="#"
     >
       Overview
-    </a>
+    </span>
   </li>
   <li
     className="movie-nav__item false"
     onClick={[MockFunction]}
   >
-    <a
+    <span
       className="movie-nav__link"
-      href="#"
     >
       Details
-    </a>
+    </span>
   </li>
   <li
     className="movie-nav__item false"
     onClick={[MockFunction]}
   >
-    <a
+    <span
       className="movie-nav__link"
-      href="#"
     >
       Reviews
-    </a>
+    </span>
   </li>
 </ul>
 `;

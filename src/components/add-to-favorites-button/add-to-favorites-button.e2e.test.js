@@ -6,6 +6,14 @@ import {BrowserRouter} from 'react-router-dom';
 
 Enzyme.configure({adapter: new Adapter()});
 
+const userDataMock = {
+  // eslint-disable-next-line camelcase
+  avatar_url: `/wtw/static/avatar/5.jpg`,
+  email: `dfkds@sdklfd.ru`,
+  id: 1,
+  name: `dfkds`
+};
+
 const filmIdExpected = 0;
 const isFavoriteExpected = 1;
 
@@ -19,7 +27,7 @@ it(`AddToFavoritesButton корректно обрабатывает onFavoriteB
           filmId={0}
           history={historyMock}
           isFavorite={false}
-          isLoggedIn={true}
+          userData={userDataMock}
           onFavoriteButtonClick={clickHandler}
         />
       </BrowserRouter>

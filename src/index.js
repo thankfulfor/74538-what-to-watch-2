@@ -13,11 +13,10 @@ import {Operation} from './operations/operation.js';
 import {configureAPI} from './api.js';
 
 import {changeFilterByGenre} from './reducers/change-filter-by-genre/change-filter-by-genre.js';
-import {increaseCountFilmsShow} from './reducers/increase-count-films-show/increase-count-films-show.js';
+import {setCountFilmsShow} from './reducers/set-count-films-show/set-count-films-show.js';
 import {loadFilms} from './reducers/load-films/load-films.js';
 import {loadPromo} from './reducers/load-promo/load-promo.js';
 import {updateUserData} from './reducers/update-user-data/update-user-data.js';
-import {setLoggedIn} from './reducers/set-logged-in/set-logged-in.js';
 import {loadFavoriteFilms} from './reducers/load-favorite-films/load-favorite-films.js';
 import {getReviews} from './reducers/get-reviews/get-reviews.js';
 
@@ -25,9 +24,8 @@ const reducers = combineReducers({
   films: loadFilms,
   promoFilm: loadPromo,
   genre: changeFilterByGenre,
-  countFilmsShow: increaseCountFilmsShow,
+  countFilmsShow: setCountFilmsShow,
   userData: updateUserData,
-  isLoggedIn: setLoggedIn,
   favoriteFilms: loadFavoriteFilms,
   reviews: getReviews,
 });
@@ -45,7 +43,6 @@ const init = () => {
 
   store.dispatch(Operation.loadPromo());
   store.dispatch(Operation.loadFilms());
-  store.dispatch(Operation.loadFavoriteFilms());
   store.dispatch(Operation.getLogin());
   // store.subscribe(() => {console.log(store.getState())});
 

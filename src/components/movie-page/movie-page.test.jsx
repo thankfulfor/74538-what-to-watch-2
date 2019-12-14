@@ -34,7 +34,7 @@ const film = {
 it(`MoviePage корректно рендерится после перезапуска`, () => {
   const tree = shallow(
       <BrowserRouter>
-        <MoviePage film={film} match={{}} />
+        <MoviePage film={film} match={{}} userData={{}} similarFilms={[]} />
       </BrowserRouter>
   );
   expect(toJson(tree)).toMatchSnapshot();

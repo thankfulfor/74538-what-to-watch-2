@@ -27,8 +27,8 @@ exports[`AddToFavoritesButton корректно рендерится после
     <AddToFavoritesButton
       filmId={0}
       isFavorite={false}
-      isLoggedIn={false}
       onFavoriteButtonClick={[Function]}
+      userData={Object {}}
     >
       <div
         className="visually-hidden"

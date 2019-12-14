@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Is genre catalog tab rendered 1`] = `
+exports[`GenreTab рендерится корректно 1`] = `
 <ul
   className="catalog__genres-list"
 >
   <li
-    className="catalog__genres-item"
+    className="catalog__genres-item catalog__genres-item--active"
   >
     <span
       className="catalog__genres-link"

@@ -1,18 +1,27 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+
 import {Operation} from '../../operations/operation.js';
+
+import {isObjectEmpty} from '../../utils/is-object-empty.js';
+
 import Header from '../header/header.jsx';
 import {Footer} from '../footer/footer.jsx';
+import {URLS} from '../../utils/constants.js';
 
 export const SignIn = (props) => {
-  const {onSignInFormSubmit, history} = props;
+  const {onSignInFormSubmit, history, userData} = props;
 
   const signInFormSubmitHandler = (evt) => {
     evt.preventDefault();
     onSignInFormSubmit(evt.target.userEmail.value, evt.target.userPassword.value);
     history.goBack();
   };
+
+  if (!isObjectEmpty(userData)) {
+    history.push(URLS.MAIN_PAGE_URL);
+  }
 
   return (
     <div className="user-page">
@@ -23,11 +32,11 @@ export const SignIn = (props) => {
         <form action="#" className="sign-in__form" onSubmit={signInFormSubmitHandler}>
           <div className="sign-in__fields">
             <div className="sign-in__field">
-              <input required className="sign-in__input" type="email" placeholder="Email address" name="userEmail" id="user-email" />
+              <input autoComplete="On" required className="sign-in__input" type="email" placeholder="Email address" name="userEmail" id="user-email" />
               <label className="sign-in__label visually-hidden" htmlFor="user-email">Email address</label>
             </div>
             <div className="sign-in__field">
-              <input required className="sign-in__input" type="password" placeholder="Password" name="userPassword" id="user-password" />
+              <input autoComplete="On" required className="sign-in__input" type="password" placeholder="Password" name="userPassword" id="user-password" />
               <label className="sign-in__label visually-hidden" htmlFor="user-password">Password</label>
             </div>
           </div>
@@ -44,7 +53,14 @@ export const SignIn = (props) => {
 
 SignIn.propTypes = {
   onSignInFormSubmit: PropTypes.func.isRequired,
-  history: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired,
+  userData: PropTypes.object.isRequired
+};
+
+const mapStateToProps = (state, ownProps) => {
+  return Object.assign({}, ownProps, {
+    userData: state.userData,
+  });
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -55,4 +71,4 @@ const mapDispatchToProps = (dispatch) => {
   });
 };
 
-export default connect(null, mapDispatchToProps)(SignIn);
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

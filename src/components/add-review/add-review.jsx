@@ -1,15 +1,17 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-
 import {Link} from 'react-router-dom';
 
 import {getFilmByIdFromUrl} from '../../selector/selectors.js';
 import {URLS} from '../../utils/constants.js';
 import {Operation} from '../../operations/operation.js';
+import {isObjectEmpty} from '../../utils/is-object-empty.js';
+
+import {Logo} from '../logo/logo.jsx';
 
 export const AddReview = (props) => {
-  const {film, isLoggedIn, avatarUrl, onAddReviewSubmit, history} = props;
+  const {film, userData, avatarUrl, onAddReviewSubmit, history} = props;
 
   const {
     background_color: backgroundColor,
@@ -32,10 +34,6 @@ export const AddReview = (props) => {
     history.push(`${URLS.FILMS_URL}/${id}`);
   };
 
-  if (!isLoggedIn) {
-    history.push(URLS.LOGIN_PAGE_URL);
-  }
-
   return (
     <section className="movie-card movie-card--full" style={style}>
       <div className="movie-card__header">
@@ -46,13 +44,7 @@ export const AddReview = (props) => {
         <h1 className="visually-hidden">WTW</h1>
 
         <header className="page-header">
-          <div className="logo">
-            <a href="main.html" className="logo__link">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
+          <Logo />
 
           <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">
@@ -60,18 +52,19 @@ export const AddReview = (props) => {
                 <Link to={`${URLS.FILMS_URL}/${id}`} className="breadcrumbs__link">{name}</Link>
               </li>
               <li className="breadcrumbs__item">
-                <a className="breadcrumbs__link">Add review</a>
+                <span className="breadcrumbs__link">Add review</span>
               </li>
             </ul>
           </nav>
 
           <div className="user-block">
-            {isLoggedIn
-              ?
-              <div className="user-block__avatar">
-                <Link to={URLS.MY_LIST_URL}><img src={avatarUrl} alt="User avatar" width="63" height="63" /></Link>
-              </div>
-              : <Link to={URLS.LOGIN_PAGE_URL}>Sign In</Link>
+            {isObjectEmpty(userData)
+              ? <Link to={URLS.LOGIN_PAGE_URL}>Sign In</Link>
+              : (
+                <div className="user-block__avatar">
+                  <Link to={URLS.MY_LIST_URL}><img src={avatarUrl} alt="User avatar" width="63" height="63" /></Link>
+                </div>
+              )
             }
           </div>
         </header>
@@ -129,17 +122,16 @@ export const AddReview = (props) => {
 AddReview.propTypes = {
   film: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
-  isLoggedIn: PropTypes.bool.isRequired,
+  userData: PropTypes.object.isRequired,
   avatarUrl: PropTypes.string.isRequired,
   onAddReviewSubmit: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state, {match}) => {
   const film = getFilmByIdFromUrl(state, match.params.id);
-  const isLoggedIn = state.isLoggedIn;
   const avatarUrl = URLS.BASE_URL + state.userData.avatar_url;
 
-  return {film, isLoggedIn, avatarUrl};
+  return {film, avatarUrl};
 };
 
 const mapDispatchToProps = (dispatch) => {

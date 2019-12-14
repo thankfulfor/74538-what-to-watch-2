@@ -1,7 +1,6 @@
 import {loadFilmAction} from '../actions/load-films.js';
 import {loadPromoAction} from '../actions/load-promo.js';
 import {updateUserDataAction} from '../actions/update-user-data.js';
-import {setLoggedInAction} from '../actions/set-logged-in.js';
 import {loadFavoriteFilmAction} from '../actions/load-favorite-films.js';
 import {loadIsFavoriteAction} from '../actions/load-is-favorite-action.js';
 import {getReviewsAction} from '../actions/get-reviews-action.js';
@@ -14,6 +13,8 @@ export const Operation = {
     return api.get(URLS.FILMS_URL)
       .then((response) => {
         dispatch(loadFilmAction(response.data));
+      }).catch((error) => {
+        throw new Error(`${error} при загрузке фильмов`);
       });
   },
   loadPromo: () => (dispatch, _getState, api) => {
@@ -21,6 +22,8 @@ export const Operation = {
       .then((response) => {
         dispatch(loadPromoAction(response.data));
         dispatch(loadIsFavoriteAction(response.data.is_favorite));
+      }).catch((error) => {
+        throw new Error(`${error} при загрузке фильма`);
       });
   },
   authenticate: (email, password) => {
@@ -30,8 +33,10 @@ export const Operation = {
         .then((response) => {
           if (response.status === 200) {
             dispatch(updateUserDataAction(response.data));
-            dispatch(setLoggedInAction(true));
+            Operation.loadFavoriteFilms();
           }
+        }).catch((error) => {
+          throw new Error(`${error} при авторизации`);
         });
     };
   },
@@ -54,6 +59,8 @@ export const Operation = {
             dispatch(setFavoriteStatusAction(response.data, getState().films));
             dispatch(loadIsFavoriteAction(response.data.is_favorite));
           }
+        }).catch((error) => {
+          throw new Error(`${error} при добавлении фильма в избранные`);
         });
     };
   },
@@ -62,10 +69,10 @@ export const Operation = {
       .then((response) => {
         if (response.status === 200) {
           dispatch(updateUserDataAction(response.data));
-          dispatch(setLoggedInAction(true));
+          Operation.loadFavoriteFilms();
         }
-      }).catch((error) => {
-        throw new Error(`${error} при загрузке статуса авториации`);
+      }).catch(() => {
+        dispatch(updateUserDataAction());
       });
   },
   postComments: (id, rating, text) => {

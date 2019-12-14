@@ -9,6 +9,8 @@ import MyList from '../my-list/my-list.jsx';
 import SignIn from '../sign-in/sign-in.jsx';
 import WelcomeScreen from '../welcome-screen/welcome-screen.jsx';
 
+import withAuth from '../../hoc/with-auth/with-auth.jsx';
+
 import {URLS} from '../../utils/constants.js';
 
 import withShowItem from '../../hoc/with-show-item/with-show-item.jsx';
@@ -26,9 +28,9 @@ export const App = (props) => {
     <Switch>
       <Route exact path={URLS.MAIN_PAGE_URL} component={WelcomeScreenWrapped} />
       <Route exact path={URLS.LOGIN_PAGE_URL} component={SignIn} />
-      <Route exact path={URLS.MY_LIST_URL} component={MyList} />
-      <Route exact path={`${URLS.FILMS_URL}/:id`} component={MoviePage}/>
-      <Route exact path={URLS.ADD_REVIEW_PAGE_URL} component={AddReview}/>
+      <Route exact path={URLS.MY_LIST_URL} component={withAuth(MyList)} />
+      <Route exact path={URLS.FILM_PAGE_URL} component={MoviePage}/>
+      <Route exact path={URLS.ADD_REVIEW_PAGE_URL} component={withAuth(AddReview)}/>
     </Switch>
   );
 };

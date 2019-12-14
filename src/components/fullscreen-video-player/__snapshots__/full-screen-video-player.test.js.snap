@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Is play button rendered 1`] = `
+exports[`FullScreenVideoPlayer рендерится корректно 1`] = `
 <Fragment>
   <div
     className="visually-hidden"

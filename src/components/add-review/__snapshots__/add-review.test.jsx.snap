@@ -27,30 +27,7 @@ exports[`AddReview корректно рендерится после перез
     <header
       className="page-header"
     >
-      <div
-        className="logo"
-      >
-        <a
-          className="logo__link"
-          href="main.html"
-        >
-          <span
-            className="logo__letter logo__letter--1"
-          >
-            W
-          </span>
-          <span
-            className="logo__letter logo__letter--2"
-          >
-            T
-          </span>
-          <span
-            className="logo__letter logo__letter--3"
-          >
-            W
-          </span>
-        </a>
-      </div>
+      <Logo />
       <nav
         className="breadcrumbs"
       >
@@ -68,31 +45,22 @@ exports[`AddReview корректно рендерится после перез
           <li
             className="breadcrumbs__item"
           >
-            <a
+            <span
               className="breadcrumbs__link"
             >
               Add review
-            </a>
+            </span>
           </li>
         </ul>
       </nav>
       <div
         className="user-block"
       >
-        <div
-          className="user-block__avatar"
+        <Link
+          to="/login"
         >
-          <Link
-            to="/mylist"
-          >
-            <img
-              alt="User avatar"
-              height="63"
-              src=""
-              width="63"
-            />
-          </Link>
-        </div>
+          Sign In
+        </Link>
       </div>
     </header>
     <div

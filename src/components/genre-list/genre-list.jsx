@@ -6,17 +6,17 @@ import {FilmList} from '../film-list/film-list-1.jsx';
 import GenreTab from '../genre-tab/genre-tab.jsx';
 import {ShowMoreButton} from '../show-more-button/show-more-button.jsx';
 
-import {increaseCountFilmsShowAction} from '../../actions/increase-count-films-show.js';
+import {setCountFilmsShowAction} from '../../actions/set-count-films-show.js';
 
 import {getFilteredFilms, getGenres} from '../../selector/selectors.js';
 import {CountConstants} from '../../utils/constants.js';
 
 export const GenreList = (props) => {
-  const {onShowMoreButtonClick, filteredFilms, genres} = props;
+  const {onShowMoreButtonClick, filteredFilms, genres, countFilmsShow} = props;
 
   const showMoreButtonClickHandler = (evt) => {
     evt.preventDefault();
-    onShowMoreButtonClick();
+    onShowMoreButtonClick(countFilmsShow);
   };
 
   return (
@@ -36,22 +36,22 @@ GenreList.propTypes = {
   films: PropTypes.array.isRequired,
   filteredFilms: PropTypes.array.isRequired,
   genre: PropTypes.string.isRequired,
-  countFilmsShow: PropTypes.number.isRequired,
   onShowMoreButtonClick: PropTypes.func.isRequired,
-  genres: PropTypes.array.isRequired
+  genres: PropTypes.array.isRequired,
+  countFilmsShow: PropTypes.number.isRequired
 };
 
 const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
   films: state.films,
   genre: state.genre,
-  countFilmsShow: state.countFilmsShow,
-  filteredFilms: getFilteredFilms(state.films, state.genre, CountConstants.COUNT_FILMS_SHOW),
-  genres: getGenres(state)
+  filteredFilms: getFilteredFilms(state.films, state.genre, state.countFilmsShow),
+  genres: getGenres(state),
+  countFilmsShow: state.countFilmsShow + CountConstants.COUNT_FILMS_SHOW_MORE
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onShowMoreButtonClick: () => {
-    dispatch(increaseCountFilmsShowAction());
+  onShowMoreButtonClick: (countFilmsShow) => {
+    dispatch(setCountFilmsShowAction(countFilmsShow));
   }
 });
 

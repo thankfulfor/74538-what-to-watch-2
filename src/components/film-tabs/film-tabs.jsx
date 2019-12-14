@@ -9,7 +9,7 @@ export const FilmTabs = (props) => {
     <ul className="movie-nav__list">
       {tabNames.map((tabName) => (
         <li key={tabName} onClick={onTabClick} className={`movie-nav__item ${tabToShow === tabName && `movie-nav__item--active`}`}>
-          <a href="#" className="movie-nav__link">{tabName}</a>
+          <span className="movie-nav__link">{tabName}</span>
         </li>
       ))}
     </ul>

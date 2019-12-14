@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {history} from '../../history.js';
 
+import {isObjectEmpty} from '../../utils/is-object-empty.js';
+
 import AddToFavoritesButton from '../add-to-favorites-button/add-to-favorites-button.jsx';
 import FullScreenVideoPlayer from '../fullscreen-video-player/full-screen-video-player.jsx';
 import GenreList from '../genre-list/genre-list.jsx';
@@ -19,7 +21,7 @@ const FullscreenVideoPlayerWithButtonsWrapped = withOpenCloseButtons(FullScreenV
 export const WelcomeScreen = (props) => {
   const {films, promoFilm} = props;
 
-  if (promoFilm === undefined || (Object.entries(promoFilm).length === 0 && promoFilm.constructor === Object)) {
+  if (promoFilm === undefined || isObjectEmpty(promoFilm)) {
     return null;
   }
 
@@ -90,7 +92,6 @@ WelcomeScreen.propTypes = {
 const mapStateToProps = (state, ownProps) => {
   return Object.assign({}, ownProps, {
     avatarUrl: URLS.BASE_URL + state.userData.avatar_url,
-    isLoggedIn: state.isLoggedIn,
     films: state.films,
     promoFilm: state.promoFilm
   });
