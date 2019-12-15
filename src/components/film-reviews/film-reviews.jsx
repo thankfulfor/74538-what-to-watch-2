@@ -37,7 +37,13 @@ export const FilmReviews = (props) => {
 };
 
 FilmReviews.propTypes = {
-  reviews: PropTypes.array.isRequired,
+  reviews: PropTypes.arrayOf(PropTypes.shape({
+    user: PropTypes.shape({
+      name: PropTypes.string,
+    }),
+    comment: PropTypes.string,
+    date: PropTypes.string,
+  })).isRequired
 };
 
 const mapStateToProps = (state, ownProps) => {

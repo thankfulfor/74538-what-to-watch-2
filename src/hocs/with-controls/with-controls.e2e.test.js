@@ -57,7 +57,7 @@ describe(`HOC withControls рендерится корректно`, () => {
   });
 
   it(`onSpaceBarPress переключает isPlaying`, () => {
-    wrapper.instance().spaceBarPressHandler({keyCode: 32});
+    wrapper.instance().spaceBarPressHandle({keyCode: 32});
 
     expect(wrapper.state(`isPlaying`)).toBe(true);
   });

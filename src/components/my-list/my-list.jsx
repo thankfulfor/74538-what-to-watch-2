@@ -7,6 +7,7 @@ import Header from '../header/header.jsx';
 import {FilmList} from '../film-list/film-list-1.jsx';
 import {Footer} from '../footer/footer.jsx';
 import {Operation} from '../../operations/operation.js';
+import {filmsType, historyType} from '../../types/types.js';
 
 export const MyList = (props) => {
   const {favoriteFilms, onLoadFavoriteMovies} = props;
@@ -34,8 +35,8 @@ export const MyList = (props) => {
 };
 
 MyList.propTypes = {
-  favoriteFilms: PropTypes.array.isRequired,
-  history: PropTypes.object.isRequired,
+  favoriteFilms: filmsType,
+  history: historyType,
   onLoadFavoriteMovies: PropTypes.func.isRequired,
 };
 

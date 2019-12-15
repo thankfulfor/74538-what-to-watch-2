@@ -1,6 +1,6 @@
 import MockAdapter from 'axios-mock-adapter';
 import {configureAPI} from '../../api';
-import {ActionTypes} from '../../utils/constants.js';
+import {ActionType} from '../../utils/constants.js';
 import {Operation} from '../../operations/operation.js';
 
 describe(`loadFavoriteFilms работает корректно`, () => {
@@ -18,7 +18,7 @@ describe(`loadFavoriteFilms работает корректно`, () => {
       .then(() => {
         expect(dispatch).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
-          type: ActionTypes.LOAD_FAVORITE_FILMS,
+          type: ActionType.LOAD_FAVORITE_FILMS,
           payload: [{fake: true}],
         });
       });

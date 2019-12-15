@@ -6,11 +6,13 @@ import {GenreTab} from './genre-tab.jsx';
 Enzyme.configure({adapter: new Adapter()});
 
 const genres = [`All genres`];
+const genre = `All genres`;
 
 it(`Компонент GenreTab корректно обрабатывает onTabClick`, () => {
   const clickHandler = jest.fn();
   const genreTab = shallow(
       <GenreTab
+        genre={genre}
         genres={genres}
         onTabClick={clickHandler}
       />

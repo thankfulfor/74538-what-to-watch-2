@@ -22,7 +22,7 @@ describe(`HOC withActiveItem рендерится корректно`, () => {
   });
 
   it(`По наведению через заданное время переключает isPlaying`, () => {
-    wrapper.instance().mouseOverHandler();
+    wrapper.instance().mouseOverHandle();
     jest.runOnlyPendingTimers();
     expect(wrapper.state().isPlaying).toEqual(true);
   });

@@ -1,6 +1,6 @@
-import {ActionTypes} from '../utils/constants.js';
+import {ActionType} from '../utils/constants.js';
 
 export const loadFavoriteFilmAction = (favoriteFilms) => ({
-  type: ActionTypes.LOAD_FAVORITE_FILMS,
+  type: ActionType.LOAD_FAVORITE_FILMS,
   payload: favoriteFilms,
 });

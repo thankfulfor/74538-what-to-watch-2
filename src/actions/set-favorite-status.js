@@ -1,4 +1,4 @@
-import {ActionTypes, initialState} from '../utils/constants.js';
+import {ActionType, initialState} from '../utils/constants.js';
 
 const setFavoriteStatus = (updatedFilm, state) => {
   const index = state.findIndex((film) => film.id === updatedFilm.id);
@@ -10,6 +10,6 @@ const setFavoriteStatus = (updatedFilm, state) => {
 };
 
 export const setFavoriteStatusAction = (updatedFilm, state = initialState.films) => ({
-  type: ActionTypes.ADD_TO_FAVORITE,
+  type: ActionType.ADD_TO_FAVORITE,
   payload: setFavoriteStatus(updatedFilm, state),
 });

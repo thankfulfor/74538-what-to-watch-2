@@ -6,7 +6,7 @@ import {MemoryRouter, Route} from 'react-router-dom';
 import {Provider} from 'react-redux';
 
 import withAuth from './with-auth.jsx';
-import {URLS} from '../../utils/constants.js';
+import {URL} from '../../utils/constants.js';
 
 Enzyme.configure({adapter: new Adapter()});
 
@@ -23,8 +23,8 @@ const SignIn = () => <h2>Залогиньтесь</h2>;
 
 const MockComponent = () => (
   <MemoryRouter initialEntries={[`/`]}>
-    <Route path={URLS.MAIN_PAGE_URL} component={withAuth(MyList)} />
-    <Route path={URLS.LOGIN_PAGE_URL} component={SignIn} />
+    <Route path={URL.MAIN_PAGE_URL} component={withAuth(MyList)} />
+    <Route path={URL.LOGIN_PAGE_URL} component={SignIn} />
   </MemoryRouter>
 );
 

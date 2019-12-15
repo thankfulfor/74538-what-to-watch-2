@@ -11,7 +11,7 @@ const film = {
 };
 
 it(`FilmCard корректно рендерится после перезапуска`, () => {
-  const mouseMoveHandler = jest.fn();
+  const mouseMoveHandle = jest.fn();
   const clickHandler = jest.fn();
   const tree = renderer.create(
       <BrowserRouter>
@@ -20,8 +20,8 @@ it(`FilmCard корректно рендерится после перезапу
           key={`${film.name}`}
           film={film}
           isPlaying={false}
-          onMouseEnter={mouseMoveHandler}
-          onMouseLeave={mouseMoveHandler}
+          onMouseEnter={mouseMoveHandle}
+          onMouseLeave={mouseMoveHandle}
         />
       </BrowserRouter>
   ).toJSON();

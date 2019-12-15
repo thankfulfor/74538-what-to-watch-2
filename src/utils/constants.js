@@ -1,11 +1,24 @@
-export const CountConstants = {
+export const CountConstant = {
   COUNT_FILMS_SHOW: 8,
   COUNT_MORE_LIKE_THIS: 4,
   COUNT_FILMS_SHOW_MORE: 20,
   COUNT_GENRES: 10,
 };
 
-export const ActionTypes = {
+export const RATING = {
+  Bad: 3,
+  Normal: 5,
+  Good: 8,
+  VeryGood: 10,
+  Awesome: 10,
+};
+
+export const SERVER_RESPONSE_STATUS = {
+  Unauthorized: 401,
+  Forbidden: 403
+};
+
+export const ActionType = {
   CHANGE_FILTER_BY_GENRE: `CHANGE_FILTER_BY_GENRE`,
   FILTER_FILMS_BY_GENRE: `FILTER_FILMS_BY_GENRE`,
   SET_COUNT_FILMS_SHOW: `SET_COUNT_FILMS_SHOW`,
@@ -21,7 +34,7 @@ export const ActionTypes = {
   LOAD_REVIEWS: `LOAD_REVIEWS`,
 };
 
-export const URLS = {
+export const URL = {
   BASE_URL: `https://htmlacademy-react-2.appspot.com/`,
   WTW_URL: `wtw`,
   MAIN_PAGE_URL: `/`,
@@ -32,13 +45,13 @@ export const URLS = {
   PROMO_URL: `/films/promo`,
   FILM_PAGE_URL: `/films/:id`,
   ADD_REVIEW_PAGE_URL: `/films/:id/review`,
-  POST_REVIEW: `/comments`,
+  REVIEW: `/comments`,
 };
 
 export const initialState = {
   genre: `All genres`,
-  countFilmsShow: CountConstants.COUNT_FILMS_SHOW,
-  countGenres: CountConstants.COUNT_GENRES,
+  countFilmsShow: CountConstant.COUNT_FILMS_SHOW,
+  countGenres: CountConstant.COUNT_GENRES,
   films: [],
   promoFilm: {},
   genres: [],

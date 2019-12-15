@@ -1,5 +1,4 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
@@ -18,11 +17,12 @@ import {FilmTabs} from '../film-tabs/film-tabs.jsx';
 import {Footer} from '../footer/footer.jsx';
 import {PlayButton} from '../play-button/play-button.jsx';
 
-import withOpenCloseButtons from '../../hoc/with-open-close-buttons/with-open-close-buttons.jsx';
-import withActiveTab from '../../hoc/with-active-tab/with-active-tab.jsx';
+import withOpenCloseButtons from '../../hocs/with-open-close-buttons/with-open-close-buttons.jsx';
+import withActiveTab from '../../hocs/with-active-tab/with-active-tab.jsx';
 
 import {history} from '../../history.js';
-import {CountConstants, URLS} from '../../utils/constants.js';
+import {CountConstant, URL} from '../../utils/constants.js';
+import {filmsType, filmType, userType} from '../../types/types.js';
 
 const FullscreenVideoPlayerWithButtonsWrapped = withOpenCloseButtons(FullScreenVideoPlayer, PlayButton);
 const FilmTabsWrapped = withActiveTab(FilmTabs, FilmDetails, FilmOverview, FilmReviews);
@@ -74,7 +74,7 @@ export const MoviePage = (props) => {
                 <AddToFavoritesButton history={history} filmId={film.id}/>
 
                 {!(Object.entries(userData).length === 0 && userData.constructor === Object) &&
-                  <Link to={`${URLS.FILMS_URL}/${id}/review`} className="btn movie-card__button">Add review</Link>
+                  <Link to={`${URL.FILMS_URL}/${id}/review`} className="btn movie-card__button">Add review</Link>
                 }
               </div>
             </div>
@@ -104,15 +104,14 @@ export const MoviePage = (props) => {
 };
 
 MoviePage.propTypes = {
-  film: PropTypes.object.isRequired,
-  match: PropTypes.object.isRequired,
-  similarFilms: PropTypes.array.isRequired,
-  userData: PropTypes.object.isRequired,
+  film: filmType,
+  similarFilms: filmsType,
+  userData: userType,
 };
 
 const mapStateToProps = (state, {match}) => {
   const film = getFilmByIdFromUrl(state, match.params.id);
-  const similarFilms = getFilteredFilms(state.films, film.genre, CountConstants.COUNT_MORE_LIKE_THIS);
+  const similarFilms = getFilteredFilms(state.films, film.genre, CountConstant.COUNT_MORE_LIKE_THIS);
   const userData = state.userData;
 
   return {film, similarFilms, userData};

@@ -1,5 +1,5 @@
 import {createSelector} from 'reselect';
-import {CountConstants, initialState} from '../utils/constants.js';
+import {CountConstant, initialState} from '../utils/constants.js';
 
 export const getFilms = (state) => state.films;
 
@@ -8,7 +8,7 @@ export const getGenres = createSelector(
     (films) => {
       const genres = [initialState.genre];
       films.forEach((film) => (genres.push(film.genre)));
-      return [...new Set(genres)].slice(0, CountConstants.COUNT_GENRES);
+      return [...new Set(genres)].slice(0, CountConstant.COUNT_GENRES);
     }
 );
 

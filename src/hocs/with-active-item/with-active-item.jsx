@@ -11,11 +11,21 @@ const withActiveItem = (Component) => {
         isPlaying: false
       };
 
-      this.mouseOverHandler = this.mouseOverHandler.bind(this);
-      this.mouseLeaveHandler = this.mouseLeaveHandler.bind(this);
+      this.mouseOverHandle = this.mouseOverHandle.bind(this);
+      this.mouseLeaveHandle = this.mouseLeaveHandle.bind(this);
     }
 
-    mouseOverHandler() {
+    componentDidMount() {
+      document.addEventListener(`mouseOver`, this.mouseOverHandle);
+      document.addEventListener(`mouseLeave`, this.mouseLeaveHandle);
+    }
+
+    componentWillUnmount() {
+      document.removeEventListener(`mouseOver`, this.mouseOverHandle);
+      document.removeEventListener(`mouseLeave`, this.mouseLeaveHandle);
+    }
+
+    mouseOverHandle() {
       this.delayShowPreview = setInterval(() => {
         this.setState({
           isPlaying: true
@@ -23,29 +33,19 @@ const withActiveItem = (Component) => {
       }, PREVIEW_DELAY);
     }
 
-    mouseLeaveHandler() {
+    mouseLeaveHandle() {
       this.setState({
         isPlaying: false
       });
       clearInterval(this.delayShowPreview);
     }
 
-    componentDidMount() {
-      document.addEventListener(`mouseOver`, this.mouseOverHandler);
-      document.addEventListener(`mouseLeave`, this.mouseLeaveHandler);
-    }
-
-    componentWillUnmount() {
-      document.removeEventListener(`mouseOver`, this.mouseOverHandler);
-      document.removeEventListener(`mouseLeave`, this.mouseLeaveHandler);
-    }
-
     render() {
       return <Component
         {...this.props}
         isPlaying={this.state.isPlaying}
-        onMouseEnter={this.mouseOverHandler}
-        onMouseLeave={this.mouseLeaveHandler}
+        onMouseEnter={this.mouseOverHandle}
+        onMouseLeave={this.mouseLeaveHandle}
       />;
     }
 

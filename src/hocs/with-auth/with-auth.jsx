@@ -1,10 +1,11 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 
+import {userType} from '../../types/types.js';
+
 import {isObjectEmpty} from '../../utils/is-object-empty.js';
-import {URLS} from '../../utils/constants.js';
+import {URL} from '../../utils/constants.js';
 
 const withAuth = (Component) => {
   class WithAuth extends React.PureComponent {
@@ -16,7 +17,7 @@ const withAuth = (Component) => {
       const {userData} = this.props;
 
       if (isObjectEmpty(userData)) {
-        return <Redirect to={URLS.LOGIN_PAGE_URL} />;
+        return <Redirect to={URL.LOGIN_PAGE_URL} />;
       }
 
       return <Component {...this.props} />;
@@ -24,7 +25,7 @@ const withAuth = (Component) => {
   }
 
   WithAuth.propTypes = {
-    userData: PropTypes.object.isRequired,
+    userData: userType,
   };
 
   const mapStateToProps = (state) => {

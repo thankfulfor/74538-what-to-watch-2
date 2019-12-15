@@ -2,13 +2,15 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
+import {userType, historyType} from '../../types/types.js';
+
 import {Operation} from '../../operations/operation.js';
 
 import {isObjectEmpty} from '../../utils/is-object-empty.js';
 
 import Header from '../header/header.jsx';
 import {Footer} from '../footer/footer.jsx';
-import {URLS} from '../../utils/constants.js';
+import {URL} from '../../utils/constants.js';
 
 export const SignIn = (props) => {
   const {onSignInFormSubmit, history, userData} = props;
@@ -20,7 +22,7 @@ export const SignIn = (props) => {
   };
 
   if (!isObjectEmpty(userData)) {
-    history.push(URLS.MAIN_PAGE_URL);
+    history.push(URL.MAIN_PAGE_URL);
   }
 
   return (
@@ -53,8 +55,8 @@ export const SignIn = (props) => {
 
 SignIn.propTypes = {
   onSignInFormSubmit: PropTypes.func.isRequired,
-  history: PropTypes.object.isRequired,
-  userData: PropTypes.object.isRequired
+  history: historyType,
+  userData: userType
 };
 
 const mapStateToProps = (state, ownProps) => {
