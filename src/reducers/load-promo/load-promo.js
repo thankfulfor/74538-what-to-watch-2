@@ -1,8 +1,8 @@
-import {ActionTypes, initialState} from '../../utils/constants.js';
+import {ActionType, initialState} from '../../utils/constants.js';
 
 export const loadPromo = (state = initialState.promoFilm, action) => {
   switch (action.type) {
-    case ActionTypes.LOAD_PROMO:
+    case ActionType.LOAD_PROMO:
       return action.payload;
 
     default:

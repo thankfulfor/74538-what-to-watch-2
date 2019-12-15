@@ -5,12 +5,12 @@ import {loadFavoriteFilmAction} from '../actions/load-favorite-films.js';
 import {loadIsFavoriteAction} from '../actions/load-is-favorite-action.js';
 import {getReviewsAction} from '../actions/get-reviews-action.js';
 
-import {URLS} from '../utils/constants.js';
+import {URL} from '../utils/constants.js';
 import {setFavoriteStatusAction} from '../actions/set-favorite-status.js';
 
 export const Operation = {
   loadFilms: () => (dispatch, _getState, api) => {
-    return api.get(URLS.FILMS_URL)
+    return api.get(URL.FILMS_URL)
       .then((response) => {
         dispatch(loadFilmAction(response.data));
       }).catch((error) => {
@@ -18,7 +18,7 @@ export const Operation = {
       });
   },
   loadPromo: () => (dispatch, _getState, api) => {
-    return api.get(URLS.PROMO_URL)
+    return api.get(URL.PROMO_URL)
       .then((response) => {
         dispatch(loadPromoAction(response.data));
         dispatch(loadIsFavoriteAction(response.data.is_favorite));
@@ -29,7 +29,7 @@ export const Operation = {
   authenticate: (email, password) => {
     return (dispatch, _getState, api) => {
       return api
-        .post(URLS.LOGIN_PAGE_URL, {email, password})
+        .post(URL.LOGIN_PAGE_URL, {email, password})
         .then((response) => {
           if (response.status === 200) {
             dispatch(updateUserDataAction(response.data));
@@ -41,7 +41,7 @@ export const Operation = {
     };
   },
   loadFavoriteFilms: () => (dispatch, _getState, api) => {
-    return api.get(URLS.FAVORITE_URL)
+    return api.get(URL.FAVORITE_URL)
       .then((response) => {
         if (response.status === 200) {
           dispatch(loadFavoriteFilmAction(response.data));
@@ -53,7 +53,7 @@ export const Operation = {
   setFavorite: (id, status) => {
     return (dispatch, getState, api) => {
       return api
-        .post(`${URLS.FAVORITE_URL}/${id}/${status}`)
+        .post(`${URL.FAVORITE_URL}/${id}/${status}`)
         .then((response) => {
           if (response.status === 200) {
             dispatch(setFavoriteStatusAction(response.data, getState().films));
@@ -65,7 +65,7 @@ export const Operation = {
     };
   },
   getLogin: () => (dispatch, _getState, api) => {
-    return api.get(URLS.LOGIN_PAGE_URL)
+    return api.get(URL.LOGIN_PAGE_URL)
       .then((response) => {
         if (response.status === 200) {
           dispatch(updateUserDataAction(response.data));
@@ -78,7 +78,7 @@ export const Operation = {
   postComments: (id, rating, text) => {
     return (dispatch, _getState, api) => {
       return api
-        .post(`${URLS.POST_REVIEW}/${id}`, {rating, text})
+        .post(`${URL.REVIEW}/${id}`, {rating, text})
         .then((response) => {
           if (response.status === 200) {
             dispatch(getReviewsAction(response.data));
@@ -89,7 +89,7 @@ export const Operation = {
     };
   },
   getReviews: (id) => (dispatch, _getState, api) => {
-    return api.get(`${URLS.POST_REVIEW}/${id}`)
+    return api.get(`${URL.REVIEW}/${id}`)
       .then((response) => {
         if (response.status === 200) {
           dispatch(getReviewsAction(response.data));

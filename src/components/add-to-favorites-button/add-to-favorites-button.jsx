@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 
+import {userType} from '../../types/types.js';
+
 import {isObjectEmpty} from '../../utils/is-object-empty.js';
 
 import {Operation} from '../../operations/operation.js';
-import {URLS} from '../../utils/constants.js';
+import {URL} from '../../utils/constants.js';
 
 import {getIsFavoriteById} from '../../selector/selectors.js';
 
@@ -19,7 +21,7 @@ export const AddToFavoritesButton = (props) => {
     return null;
   }
 
-  const loginPageUrl = URLS.LOGIN_PAGE_URL;
+  const loginPageUrl = URL.LOGIN_PAGE_URL;
 
   const favoriteButtonClickHandler = () => {
     if (isObjectEmpty(userData)) {
@@ -56,7 +58,7 @@ AddToFavoritesButton.propTypes = {
   isFavorite: PropTypes.bool.isRequired,
   filmId: PropTypes.number.isRequired,
   onFavoriteButtonClick: PropTypes.func.isRequired,
-  userData: PropTypes.object.isRequired,
+  userData: userType,
 };
 
 const mapStateToProps = (state, ownProps) => {

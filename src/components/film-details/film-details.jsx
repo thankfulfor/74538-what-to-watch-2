@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {timeConvert} from '../../utils/time-convert.js';
-import PropTypes from 'prop-types';
+import {filmType} from '../../types/types.js';
 
 export const FilmDetails = (props) => {
   const {film} = props;
@@ -40,5 +40,5 @@ export const FilmDetails = (props) => {
 };
 
 FilmDetails.propTypes = {
-  film: PropTypes.object.isRequired,
+  film: filmType,
 };

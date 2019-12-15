@@ -1,7 +1,8 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 
-import withControlButtons from '../../hoc/with-controls/with-controls.jsx';
+import withControlButtons from '../../hocs/with-controls/with-controls.jsx';
+import {filmType} from '../../types/types.js';
 
 const formatTime = (seconds) => {
   return new Date(seconds * 1000).toISOString().substr(11, 8);
@@ -125,7 +126,7 @@ FullScreenVideoPlayer.propTypes = {
   duration: PropTypes.number.isRequired,
   currentTime: PropTypes.number.isRequired,
   videoRef: PropTypes.shape({current: PropTypes.instanceOf(Element)}),
-  film: PropTypes.object.isRequired,
+  film: filmType,
 };
 
 export {FullScreenVideoPlayer};

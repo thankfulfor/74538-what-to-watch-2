@@ -1,6 +1,6 @@
 import MockAdapter from 'axios-mock-adapter';
 import {configureAPI} from '../../api';
-import {ActionTypes} from '../../utils/constants.js';
+import {ActionType} from '../../utils/constants.js';
 import {Operation} from '../../operations/operation.js';
 
 describe(`loadPromo работает корректно`, () => {
@@ -18,7 +18,7 @@ describe(`loadPromo работает корректно`, () => {
       .then(() => {
         expect(dispatch).toHaveBeenCalledTimes(2);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
-          type: ActionTypes.LOAD_PROMO,
+          type: ActionType.LOAD_PROMO,
           payload: [{fake: true}],
         });
       });

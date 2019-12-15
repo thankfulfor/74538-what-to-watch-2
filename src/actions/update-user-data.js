@@ -1,6 +1,6 @@
-import {ActionTypes, initialState} from '../utils/constants.js';
+import {ActionType, initialState} from '../utils/constants.js';
 
 export const updateUserDataAction = (state = initialState.userData) => ({
-  type: ActionTypes.UPDATE_USER_DATA,
+  type: ActionType.UPDATE_USER_DATA,
   payload: state,
 });

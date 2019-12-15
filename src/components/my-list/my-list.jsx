@@ -7,20 +7,23 @@ import Header from '../header/header.jsx';
 import {FilmList} from '../film-list/film-list-1.jsx';
 import {Footer} from '../footer/footer.jsx';
 import {Operation} from '../../operations/operation.js';
+import {filmsType, historyType} from '../../types/types.js';
 
-export const MyList = (props) => {
-  const {favoriteFilms, onLoadFavoriteMovies} = props;
-  onLoadFavoriteMovies();
-
-  if (favoriteFilms === undefined) {
-    return null;
+export class MyList extends React.PureComponent {
+  constructor(props) {
+    super(props);
   }
 
-  return (
-    <React.Fragment>
+  componentDidMount() {
+    const {onLoadFavoriteMovies} = this.props;
+    onLoadFavoriteMovies();
+  }
 
+  render() {
+    const {favoriteFilms} = this.props;
+    return (
       <div className="user-page">
-        <Header title="My list"/>
+        <Header title="My list" />
 
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
@@ -29,13 +32,13 @@ export const MyList = (props) => {
         </section>
         <Footer />
       </div>
-    </React.Fragment>
-  );
-};
+    );
+  }
+}
 
 MyList.propTypes = {
-  favoriteFilms: PropTypes.array.isRequired,
-  history: PropTypes.object.isRequired,
+  favoriteFilms: filmsType,
+  history: historyType,
   onLoadFavoriteMovies: PropTypes.func.isRequired,
 };
 

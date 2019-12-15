@@ -1,12 +1,12 @@
 import axios from 'axios';
 import {history} from './history.js';
 
-import {URLS} from './utils/constants.js';
+import {URL, SERVER_RESPONSE_STATUS} from './utils/constants.js';
 import {updateUserDataAction} from './actions/update-user-data.js';
 
 export const configureAPI = (dispatch) => {
   const api = axios.create({
-    baseURL: URLS.BASE_URL + URLS.WTW_URL,
+    baseURL: URL.BASE_URL + URL.WTW_URL,
     timeout: 1000 * 5,
     withCredentials: true,
   });
@@ -14,10 +14,10 @@ export const configureAPI = (dispatch) => {
   const onSuccess = (response) => response;
 
   const onFail = (error) => {
-    if (error.response.status === 403 || error.response.status === 401) {
+    if (error.response.status === SERVER_RESPONSE_STATUS.Unauthorized || error.response.status === SERVER_RESPONSE_STATUS.Forbidden) {
       // Проверяем, что это не ошибка запроса статуса авторизации
-      if (!((error.response.config.url === (URLS.BASE_URL + URLS.WTW_URL + URLS.LOGIN_PAGE_URL)) && error.response.config.method === `get`)) {
-        history.push(URLS.LOGIN_PAGE_URL);
+      if (!((error.response.config.url === (URL.BASE_URL + URL.WTW_URL + URL.LOGIN_PAGE_URL)) && error.response.config.method === `get`)) {
+        history.push(URL.LOGIN_PAGE_URL);
         dispatch(updateUserDataAction());
       }
     }

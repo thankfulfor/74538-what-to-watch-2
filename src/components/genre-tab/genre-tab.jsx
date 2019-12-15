@@ -27,7 +27,7 @@ export const GenreTab = (props) => {
 };
 
 GenreTab.propTypes = {
-  genres: PropTypes.array.isRequired,
+  genres: PropTypes.arrayOf(PropTypes.string),
   genre: PropTypes.string.isRequired,
   onTabClick: PropTypes.func.isRequired
 };

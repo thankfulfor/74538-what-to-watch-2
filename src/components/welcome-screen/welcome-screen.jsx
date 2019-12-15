@@ -2,6 +2,7 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {history} from '../../history.js';
+import {filmsType, filmType, historyType} from '../../types/types.js';
 
 import {isObjectEmpty} from '../../utils/is-object-empty.js';
 
@@ -12,9 +13,9 @@ import Header from '../header/header.jsx';
 import {Footer} from '../footer/footer.jsx';
 import {PlayButton} from '../play-button/play-button.jsx';
 
-import withOpenCloseButtons from '../../hoc/with-open-close-buttons/with-open-close-buttons.jsx';
+import withOpenCloseButtons from '../../hocs/with-open-close-buttons/with-open-close-buttons.jsx';
 
-import {URLS} from '../../utils/constants.js';
+import {URL} from '../../utils/constants.js';
 
 const FullscreenVideoPlayerWithButtonsWrapped = withOpenCloseButtons(FullScreenVideoPlayer, PlayButton);
 
@@ -83,15 +84,15 @@ export const WelcomeScreen = (props) => {
 };
 
 WelcomeScreen.propTypes = {
-  films: PropTypes.array.isRequired,
-  promoFilm: PropTypes.object.isRequired,
+  films: filmsType,
+  promoFilm: filmType,
   avatarUrl: PropTypes.string.isRequired,
-  history: PropTypes.object.isRequired
+  history: historyType
 };
 
 const mapStateToProps = (state, ownProps) => {
   return Object.assign({}, ownProps, {
-    avatarUrl: URLS.BASE_URL + state.userData.avatar_url,
+    avatarUrl: URL.BASE_URL + state.userData.avatar_url,
     films: state.films,
     promoFilm: state.promoFilm
   });

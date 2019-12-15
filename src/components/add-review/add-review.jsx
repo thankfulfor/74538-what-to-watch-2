@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
+import {filmType, historyType, userType} from '../../types/types.js';
+
 import {getFilmByIdFromUrl} from '../../selector/selectors.js';
-import {URLS} from '../../utils/constants.js';
+import {URL} from '../../utils/constants.js';
 import {Operation} from '../../operations/operation.js';
 import {isObjectEmpty} from '../../utils/is-object-empty.js';
 
@@ -31,7 +33,7 @@ export const AddReview = (props) => {
     const rating = Array.from(document.getElementsByClassName(`rating__input`)).find((radio) => radio.checked).value;
     const comment = document.getElementById(`review-text`).value;
     onAddReviewSubmit(id, rating, comment);
-    history.push(`${URLS.FILMS_URL}/${id}`);
+    history.push(`${URL.FILMS_URL}/${id}`);
   };
 
   return (
@@ -49,7 +51,7 @@ export const AddReview = (props) => {
           <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">
               <li className="breadcrumbs__item">
-                <Link to={`${URLS.FILMS_URL}/${id}`} className="breadcrumbs__link">{name}</Link>
+                <Link to={`${URL.FILMS_URL}/${id}`} className="breadcrumbs__link">{name}</Link>
               </li>
               <li className="breadcrumbs__item">
                 <span className="breadcrumbs__link">Add review</span>
@@ -59,10 +61,10 @@ export const AddReview = (props) => {
 
           <div className="user-block">
             {isObjectEmpty(userData)
-              ? <Link to={URLS.LOGIN_PAGE_URL}>Sign In</Link>
+              ? <Link to={URL.LOGIN_PAGE_URL}>Sign In</Link>
               : (
                 <div className="user-block__avatar">
-                  <Link to={URLS.MY_LIST_URL}><img src={avatarUrl} alt="User avatar" width="63" height="63" /></Link>
+                  <Link to={URL.MY_LIST_URL}><img src={avatarUrl} alt="User avatar" width="63" height="63" /></Link>
                 </div>
               )
             }
@@ -120,16 +122,16 @@ export const AddReview = (props) => {
 };
 
 AddReview.propTypes = {
-  film: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired,
-  userData: PropTypes.object.isRequired,
+  film: filmType,
+  history: historyType,
+  userData: userType,
   avatarUrl: PropTypes.string.isRequired,
   onAddReviewSubmit: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state, {match}) => {
   const film = getFilmByIdFromUrl(state, match.params.id);
-  const avatarUrl = URLS.BASE_URL + state.userData.avatar_url;
+  const avatarUrl = URL.BASE_URL + state.userData.avatar_url;
 
   return {film, avatarUrl};
 };

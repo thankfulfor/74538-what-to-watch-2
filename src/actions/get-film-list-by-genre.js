@@ -1,4 +1,4 @@
-import {ActionTypes, initialState} from '../utils/constants.js';
+import {ActionType, initialState} from '../utils/constants.js';
 
 const getFilmsByGenre = (genre, state = initialState.films) => {
   if (genre === `All genres`) {
@@ -12,7 +12,7 @@ const getFilmsByGenre = (genre, state = initialState.films) => {
 
 export const getFilmListByGenreAction = (genre, state = initialState.films) => {
   return ({
-    type: ActionTypes.FILTER_FILMS_BY_GENRE,
+    type: ActionType.FILTER_FILMS_BY_GENRE,
     payload: getFilmsByGenre(genre, state),
   });
 };

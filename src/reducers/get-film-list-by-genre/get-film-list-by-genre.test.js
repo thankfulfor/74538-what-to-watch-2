@@ -1,5 +1,5 @@
 import {getFilmListByGenreAction} from '../../actions/get-film-list-by-genre.js';
-import {ActionTypes} from '../../utils/constants.js';
+import {ActionType} from '../../utils/constants.js';
 
 const films = [{
   previewImage: `img/we-need-to-talk-about-kevin.jpg`,
@@ -12,7 +12,7 @@ describe(`getFilmListByGenreAction работает корректно`, () => {
   it(`getFilmListByGenreAction фильтрует массив фильмов по переданному жанру`, () => {
     expect(getFilmListByGenreAction(`Drama`, films))
       .toEqual({
-        type: ActionTypes.FILTER_FILMS_BY_GENRE,
+        type: ActionType.FILTER_FILMS_BY_GENRE,
         payload: [films[0]]
       });
   });

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import FilmCard from '../film-card/film-card.jsx';
-import withActiveItem from '../../hoc/with-active-item/with-active-item.jsx';
+import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
+import {filmsType} from '../../types/types.js';
 
 const FilmCardWrapped = withActiveItem(FilmCard);
 
@@ -16,5 +16,5 @@ export const FilmList = (props) => {
 };
 
 FilmList.propTypes = {
-  films: PropTypes.array.isRequired,
+  films: filmsType,
 };
