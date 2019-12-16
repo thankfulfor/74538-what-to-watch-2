@@ -17,7 +17,7 @@ const promoFilm = {
 };
 
 it(`WelcomeScreen корректно рендерится после перезапуска`, () => {
-  const clickHandler = function () {};
+  const handleClick = function () {};
   const historyMock = {push: jest.fn()};
   const tree = shallow(
       <WelcomeScreen
@@ -25,7 +25,7 @@ it(`WelcomeScreen корректно рендерится после перез�
         avatarUrl={``}
         films={films}
         filteredFilms={films}
-        onClick={clickHandler}
+        onClick={handleClick}
         promoFilm={promoFilm}
       />
   );

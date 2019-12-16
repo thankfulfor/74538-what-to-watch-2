@@ -12,32 +12,32 @@ const withOpenCloseButtons = (Popup, Button) => {
         isPlaying: false
       };
 
-      this.showPlayerButtonClickHandle = this.showPlayerButtonClickHandle.bind(this);
-      this.exitButtonClickHandle = this.exitButtonClickHandle.bind(this);
-      this.escapeButtonPressHandle = this.escapeButtonPressHandle.bind(this);
+      this.handleShowPlayerButtonClick = this.handleShowPlayerButtonClick.bind(this);
+      this.handleExitButtonClick = this.handleExitButtonClick.bind(this);
+      this.handleEscapeButtonPress = this.handleEscapeButtonPress.bind(this);
     }
 
     componentDidMount() {
-      document.addEventListener(`keydown`, this.escapeButtonPressHandle, false);
+      document.addEventListener(`keydown`, this.handleEscapeButtonPress, false);
     }
 
     componentWillUnmount() {
-      document.removeEventListener(`keydown`, this.escapeButtonPressHandle, false);
+      document.removeEventListener(`keydown`, this.handleEscapeButtonPress, false);
     }
 
-    exitButtonClickHandle() {
+    handleExitButtonClick() {
       document.getElementsByTagName(`body`)[0].style.overflow = `visible`;
       this.setState({isShown: false});
     }
 
-    escapeButtonPressHandle(evt) {
+    handleEscapeButtonPress(evt) {
       if (evt.keyCode === 27) {
         document.getElementsByTagName(`body`)[0].style.overflow = `visible`;
         this.setState({isShown: false});
       }
     }
 
-    showPlayerButtonClickHandle() {
+    handleShowPlayerButtonClick() {
       document.getElementsByTagName(`body`)[0].style.overflow = `hidden`;
       this.setState({isShown: true});
     }
@@ -47,7 +47,7 @@ const withOpenCloseButtons = (Popup, Button) => {
         <React.Fragment>
           <Button
             {...this.props}
-            onShowPlayerButtonClick={this.showPlayerButtonClickHandle}
+            onShowPlayerButtonClick={this.handleShowPlayerButtonClick}
           />
           {this.state.isShown &&
             ReactDOM.createPortal(
@@ -57,7 +57,7 @@ const withOpenCloseButtons = (Popup, Button) => {
                   role="dialog">
                   <Popup
                     {...this.props}
-                    onExitButtonClick={this.exitButtonClickHandle}
+                    onExitButtonClick={this.handleExitButtonClick}
                   />
                 </div>,
                 document.body

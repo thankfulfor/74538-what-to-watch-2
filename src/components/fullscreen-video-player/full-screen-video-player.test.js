@@ -14,17 +14,17 @@ const film = {
 };
 
 it(`FullScreenVideoPlayer рендерится корректно`, () => {
-  const clickHandler = jest.fn();
+  const handleClick = jest.fn();
   const mockVideoRef = React.createRef();
 
   const tree = shallow(
       <FullScreenVideoPlayer
         film={film}
-        onExitButtonClick={clickHandler}
-        onFullScreenButtonClick={clickHandler}
+        onExitButtonClick={handleClick}
+        onFullScreenButtonClick={handleClick}
         isFullScreen={false}
         isPlaying={false}
-        onPlayPauseButtonClick={clickHandler}
+        onPlayPauseButtonClick={handleClick}
         duration={0}
         currentTime={0}
         videoRef={mockVideoRef}

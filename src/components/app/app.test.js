@@ -17,12 +17,12 @@ const promoFilm = {
 };
 
 it(`App корректно рендерится после перезапуска`, () => {
-  const clickHandler = function () {};
+  const handleClick = function () {};
   const tree = shallow(
       <App
         films={films}
         filteredFilms={films}
-        onClick={clickHandler}
+        onClick={handleClick}
         promoFilm={promoFilm}
       />);
   expect(toJson(tree)).toMatchSnapshot();

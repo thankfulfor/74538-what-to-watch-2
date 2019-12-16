@@ -14,13 +14,13 @@ const withControlButtons = (Component) => {
         currentTime: 0,
       };
 
-      this.fullScreenButtonClickHandle = this.fullScreenButtonClickHandle.bind(this);
-      this.playPauseButtonClickHandle = this.playPauseButtonClickHandle.bind(this);
-      this.spaceBarPressHandle = this.spaceBarPressHandle.bind(this);
+      this.handleFullScreenButtonClick = this.handleFullScreenButtonClick.bind(this);
+      this.handlePlayPauseButtonClick = this.handlePlayPauseButtonClick.bind(this);
+      this.handleSpaceBarPress = this.handleSpaceBarPress.bind(this);
     }
 
     componentDidMount() {
-      document.addEventListener(`keydown`, this.spaceBarPressHandle, false);
+      document.addEventListener(`keydown`, this.handleSpaceBarPress, false);
       this.videoRef.current.ontimeupdate = () => (
         this.setState({currentTime: this.videoRef.current.currentTime})
       );
@@ -38,20 +38,20 @@ const withControlButtons = (Component) => {
     }
 
     componentWillUnmount() {
-      document.removeEventListener(`keydown`, this.spaceBarPressHandle, false);
+      document.removeEventListener(`keydown`, this.handleSpaceBarPress, false);
       this.videoRef.current.onloadedmetadata = null;
       this.videoRef.current.ontimeupdate = null;
     }
 
-    fullScreenButtonClickHandle() {
+    handleFullScreenButtonClick() {
       this.setState({isFullScreen: !this.state.isFullScreen});
     }
 
-    playPauseButtonClickHandle() {
+    handlePlayPauseButtonClick() {
       this.setState({isPlaying: !this.state.isPlaying});
     }
 
-    spaceBarPressHandle(evt) {
+    handleSpaceBarPress(evt) {
       if (evt.keyCode === 32) {
         this.setState({isPlaying: !this.state.isPlaying});
       }
@@ -67,9 +67,9 @@ const withControlButtons = (Component) => {
           currentTime={this.state.currentTime}
           isPlaying={this.state.isPlaying}
           isFullScreen={this.state.isFullScreen}
-          onPlayPauseButtonClick={this.playPauseButtonClickHandle}
-          onFullScreenButtonClick={this.fullScreenButtonClickHandle}
-          onSpaceBarPress={this.spaceBarPressHandle}
+          onPlayPauseButtonClick={this.handlePlayPauseButtonClick}
+          onFullScreenButtonClick={this.handleFullScreenButtonClick}
+          onSpaceBarPress={this.handleSpaceBarPress}
         />
       );
     }

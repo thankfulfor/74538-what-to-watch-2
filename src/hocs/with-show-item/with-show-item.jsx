@@ -9,24 +9,24 @@ const withShowItem = (Component) => {
         isShown: false
       };
 
-      this.exitButtonClickHandle = this.exitButtonClickHandle.bind(this);
-      this.escapeButtonPressHandle = this.escapeButtonPressHandle.bind(this);
+      this.handleExitButtonClick = this.handleExitButtonClick.bind(this);
+      this.handleEscapeButtonPress = this.handleEscapeButtonPress.bind(this);
     }
 
     componentDidMount() {
-      document.addEventListener(`keydown`, this.escapeButtonPressHandle, false);
+      document.addEventListener(`keydown`, this.handleEscapeButtonPress, false);
     }
 
     componentWillUnmount() {
-      document.removeEventListener(`keydown`, this.escapeButtonPressHandle, false);
+      document.removeEventListener(`keydown`, this.handleEscapeButtonPress, false);
     }
 
-    exitButtonClickHandle() {
+    handleExitButtonClick() {
       document.getElementsByTagName(`body`)[0].style.overflow = `visible`;
       this.setState({isShown: false});
     }
 
-    escapeButtonPressHandle(evt) {
+    handleEscapeButtonPress(evt) {
       if (evt.keyCode === 27) {
         document.getElementsByTagName(`body`)[0].style.overflow = `visible`;
         this.setState({isShown: false});
@@ -38,8 +38,8 @@ const withShowItem = (Component) => {
         <Component
           {...this.props}
           isShown={this.state.isShown}
-          onExitButton={this.exitButtonClickHandle}
-          onEscapePress={this.escapeButtonPressHandle}
+          onExitButton={this.handleExitButtonClick}
+          onEscapePress={this.handleEscapeButtonPress}
         />
       );
     }

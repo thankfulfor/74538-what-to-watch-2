@@ -5,17 +5,17 @@ export const CountConstant = {
   COUNT_GENRES: 10,
 };
 
-export const RATING = {
-  Bad: 3,
-  Normal: 5,
-  Good: 8,
-  VeryGood: 10,
-  Awesome: 10,
+export const Rating = {
+  BAD: 3,
+  NORMAL: 5,
+  GOOD: 8,
+  VERY_GOOD: 10,
+  AWESOME: 10,
 };
 
-export const SERVER_RESPONSE_STATUS = {
-  Unauthorized: 401,
-  Forbidden: 403
+export const ServerResponseStatus = {
+  UNAUTHORIZED: 401,
+  FORBIDDEN: 403
 };
 
 export const ActionType = {

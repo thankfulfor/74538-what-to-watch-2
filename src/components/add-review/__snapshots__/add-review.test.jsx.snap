@@ -39,7 +39,7 @@ exports[`AddReview корректно рендерится после перез
           >
             <Link
               className="breadcrumbs__link"
-              to="/films/"
+              to="/films/0"
             />
           </li>
           <li

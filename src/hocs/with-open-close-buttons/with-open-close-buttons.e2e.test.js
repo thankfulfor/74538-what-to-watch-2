@@ -55,7 +55,7 @@ describe(`HOC withOpenCloseButtons рендерится корректно`, () 
 
   it(`escapeButtonPress переключает isShown в false`, () => {
     instance = wrapper.instance();
-    instance.escapeButtonPressHandle({keyCode: 27});
+    instance.handleEscapeButtonPress({keyCode: 27});
 
     expect(wrapper.state(`isShown`)).toBe(false);
   });

@@ -23,7 +23,7 @@ export const AddToFavoritesButton = (props) => {
 
   const loginPageUrl = URL.LOGIN_PAGE_URL;
 
-  const favoriteButtonClickHandler = () => {
+  const handleFavoriteButtonClick = () => {
     if (isObjectEmpty(userData)) {
       history.push(loginPageUrl);
     } else {
@@ -43,7 +43,7 @@ export const AddToFavoritesButton = (props) => {
       <button
         className="btn btn--list movie-card__button"
         type="button"
-        onClick={favoriteButtonClickHandler}
+        onClick={handleFavoriteButtonClick}
       >
         <svg viewBox="0 0 19 20" width="19" height="20">
           <use xlinkHref={isFavorite ? `#in-list` : `#add`} />

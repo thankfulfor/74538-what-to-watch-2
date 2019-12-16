@@ -20,7 +20,7 @@ describe(`HOC withShowItem рендерится корректно`, () => {
   });
 
   it(`По клику переключает isShown в false`, () => {
-    wrapper.instance().exitButtonClickHandle();
+    wrapper.instance().handleExitButtonClick();
     expect(wrapper.state().isShown).toEqual(false);
   });
 });

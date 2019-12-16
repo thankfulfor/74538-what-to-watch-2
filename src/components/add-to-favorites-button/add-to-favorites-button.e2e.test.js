@@ -19,7 +19,7 @@ const isFavoriteExpected = 1;
 
 it(`AddToFavoritesButton корректно обрабатывает onFavoriteButtonClick`, () => {
   // eslint-disable-next-line no-console
-  const clickHandler = jest.fn();
+  const handleClick = jest.fn();
   const historyMock = {push: jest.fn()};
   const addToFavoritesButton = mount(
       <BrowserRouter>
@@ -28,11 +28,11 @@ it(`AddToFavoritesButton корректно обрабатывает onFavoriteB
           history={historyMock}
           isFavorite={false}
           userData={userDataMock}
-          onFavoriteButtonClick={clickHandler}
+          onFavoriteButtonClick={handleClick}
         />
       </BrowserRouter>
   );
   const button = addToFavoritesButton.find(`button`);
   button.simulate(`click`);
-  expect(clickHandler).toHaveBeenCalledWith(filmIdExpected, isFavoriteExpected);
+  expect(handleClick).toHaveBeenCalledWith(filmIdExpected, isFavoriteExpected);
 });

@@ -4,13 +4,13 @@ import {FilmTabs} from './film-tabs.jsx';
 import {BrowserRouter} from 'react-router-dom';
 
 it(`FilmTabs корректно рендерится после перезапуска`, () => {
-  const clickHandler = jest.fn();
+  const handleClick = jest.fn();
   const tree = renderer
     .create(
         <BrowserRouter>
           <FilmTabs
             tabToShow=''
-            onTabClick={clickHandler}
+            onTabClick={handleClick}
           />
         </BrowserRouter>
     )

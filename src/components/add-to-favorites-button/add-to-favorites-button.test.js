@@ -8,7 +8,7 @@ import {BrowserRouter} from 'react-router-dom';
 Enzyme.configure({adapter: new Adapter()});
 
 it(`AddToFavoritesButton корректно рендерится после перезапуска`, () => {
-  const clickHandler = function () {};
+  const handleClick = function () {};
 
   const tree = mount(
       <BrowserRouter>
@@ -16,7 +16,7 @@ it(`AddToFavoritesButton корректно рендерится после пе
           filmId={0}
           isFavorite={false}
           userData={{}}
-          onFavoriteButtonClick={clickHandler}
+          onFavoriteButtonClick={handleClick}
         />
       </BrowserRouter>);
   expect(toJson(tree)).toMatchSnapshot();

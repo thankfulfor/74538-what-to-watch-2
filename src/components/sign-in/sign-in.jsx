@@ -15,7 +15,7 @@ import {URL} from '../../utils/constants.js';
 export const SignIn = (props) => {
   const {onSignInFormSubmit, history, userData} = props;
 
-  const signInFormSubmitHandler = (evt) => {
+  const handleSignInFormSubmit = (evt) => {
     evt.preventDefault();
     onSignInFormSubmit(evt.target.userEmail.value, evt.target.userPassword.value);
     history.goBack();
@@ -31,7 +31,7 @@ export const SignIn = (props) => {
       <Header title="Sign in" />
 
       <div className="sign-in user-page__content">
-        <form action="#" className="sign-in__form" onSubmit={signInFormSubmitHandler}>
+        <form action="#" className="sign-in__form" onSubmit={handleSignInFormSubmit}>
           <div className="sign-in__fields">
             <div className="sign-in__field">
               <input autoComplete="On" required className="sign-in__input" type="email" placeholder="Email address" name="userEmail" id="user-email" />

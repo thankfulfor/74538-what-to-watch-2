@@ -1,7 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 
-import {RATING} from '../../utils/constants.js';
+import {Rating} from '../../utils/constants.js';
 
 export const FilmOverview = (props) => {
   const {film} = props;
@@ -9,15 +9,15 @@ export const FilmOverview = (props) => {
 
   const renderTextRating = (score) => {
     switch (true) {
-      case (score <= RATING.Bad):
+      case (score <= Rating.BAD):
         return `Bad`;
-      case (score <= RATING.Normal):
+      case (score <= Rating.NORMAL):
         return `Normal`;
-      case (score <= RATING.Good):
+      case (score <= Rating.GOOD):
         return `Good`;
-      case (score <= RATING.VeryGood):
+      case (score <= Rating.VERY_GOOD):
         return `Very good`;
-      case (score > RATING.Awesome):
+      case (score > Rating.AWESOME):
         return `Awesome`;
       default:
         return `No scores yet`;

@@ -11,11 +11,11 @@ const film = {
   posterImage: ``,
   backgroundImage: ``,
   name: ``,
-  id: ``,
+  id: 0,
 };
 
 it(`AddReview корректно рендерится после перезапуска`, () => {
-  const clickHandler = function () {};
+  const handleClick = function () {};
   const historyMock = {push: jest.fn()};
   const tree = shallow(
       <AddReview
@@ -23,7 +23,7 @@ it(`AddReview корректно рендерится после перезап�
         film={film}
         history={historyMock}
         userData={{}}
-        onAddReviewSubmit={clickHandler}
+        onAddReviewSubmit={handleClick}
       />
   );
   expect(toJson(tree)).toMatchSnapshot();

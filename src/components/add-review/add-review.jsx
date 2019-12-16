@@ -27,7 +27,7 @@ export const AddReview = (props) => {
     backgroundColor: `${backgroundColor}`,
   };
 
-  const addReviewSubmitHandler = (evt) => {
+  const handleAddReviewSubmit = (evt) => {
     evt.preventDefault();
     document.getElementById(`fields`).setAttribute(`disabled`, `disabled`);
     const rating = Array.from(document.getElementsByClassName(`rating__input`)).find((radio) => radio.checked).value;
@@ -77,7 +77,7 @@ export const AddReview = (props) => {
       </div>
 
       <div className="add-review">
-        <form action="#" className="add-review__form" onSubmit={addReviewSubmitHandler}>
+        <form action="#" className="add-review__form" onSubmit={handleAddReviewSubmit}>
           <fieldset id="fields">
             <div className="rating">
               <div className="rating__stars">

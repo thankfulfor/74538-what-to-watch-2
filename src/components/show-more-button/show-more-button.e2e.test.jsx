@@ -6,10 +6,10 @@ import {ShowMoreButton} from './show-more-button.jsx';
 Enzyme.configure({adapter: new Adapter()});
 
 it(`Компонент ShowMoreButton корректно обрабатывает onClick`, () => {
-  const clickHandler = jest.fn();
-  const welcomeScreen = shallow(<ShowMoreButton onClick={clickHandler} />);
+  const handleClick = jest.fn();
+  const welcomeScreen = shallow(<ShowMoreButton onClick={handleClick} />);
   const startButton = welcomeScreen.find(`.catalog__button`);
 
   startButton.simulate(`click`);
-  expect(clickHandler).toHaveBeenCalledTimes(1);
+  expect(handleClick).toHaveBeenCalledTimes(1);
 });

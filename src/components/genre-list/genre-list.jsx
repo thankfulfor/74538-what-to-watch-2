@@ -16,7 +16,7 @@ import {CountConstant} from '../../utils/constants.js';
 export const GenreList = (props) => {
   const {onShowMoreButtonClick, filteredFilms, genres, countFilmsShow} = props;
 
-  const showMoreButtonClickHandler = (evt) => {
+  const handleShowMoreButtonClick = (evt) => {
     evt.preventDefault();
     onShowMoreButtonClick(countFilmsShow);
   };
@@ -29,7 +29,7 @@ export const GenreList = (props) => {
 
       <FilmList films={filteredFilms} />
 
-      {filteredFilms.length >= (countFilmsShow - CountConstant.COUNT_FILMS_SHOW_MORE) && <ShowMoreButton onClick={showMoreButtonClickHandler} />}
+      {filteredFilms.length >= (countFilmsShow - CountConstant.COUNT_FILMS_SHOW_MORE) && <ShowMoreButton onClick={handleShowMoreButtonClick} />}
     </section>
   );
 };

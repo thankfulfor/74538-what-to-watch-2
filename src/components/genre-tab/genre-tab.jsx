@@ -8,7 +8,7 @@ import {setCountFilmsShowAction} from '../../actions/set-count-films-show.js';
 export const GenreTab = (props) => {
   const {genres, onTabClick, genre} = props;
 
-  const tabClickHandler = (evt) => {
+  const handleTabClick = (evt) => {
     evt.preventDefault();
     onTabClick(evt.target.textContent);
   };
@@ -18,7 +18,7 @@ export const GenreTab = (props) => {
       {genres.map((genreItem, i) => {
         return (
           <li className={`catalog__genres-item ${genreItem === genre && `catalog__genres-item--active`}`} key={`${genreItem}-${i}`}>
-            <span onClick={tabClickHandler} className="catalog__genres-link">{genreItem}</span>
+            <span onClick={handleTabClick} className="catalog__genres-link">{genreItem}</span>
           </li>
         );
       })}

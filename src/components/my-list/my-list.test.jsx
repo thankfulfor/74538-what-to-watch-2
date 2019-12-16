@@ -8,7 +8,7 @@ Enzyme.configure({adapter: new Adapter()});
 
 it(`MyList корректно рендерится после перезапуска`, () => {
   const historyMock = {push: jest.fn()};
-  const loadHandler = jest.fn();
-  const tree = shallow(<MyList onLoadFavoriteMovies={loadHandler} favoriteFilms={[]} history={historyMock} />);
+  const handleLoad = jest.fn();
+  const tree = shallow(<MyList onLoadFavoriteMovies={handleLoad} favoriteFilms={[]} history={historyMock} />);
   expect(toJson(tree)).toMatchSnapshot();
 });

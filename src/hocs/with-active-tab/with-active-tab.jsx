@@ -11,10 +11,10 @@ const withActiveTab = (Tab, TabContent1, TabContent2, TabContent3) => {
         tabToShow: tabNames[0]
       };
 
-      this.tabClickHandle = this.tabClickHandle.bind(this);
+      this.handleTabClick = this.handleTabClick.bind(this);
     }
 
-    tabClickHandle(evt) {
+    handleTabClick(evt) {
       evt.preventDefault();
       this.setState({tabToShow: evt.target.textContent});
     }
@@ -23,7 +23,7 @@ const withActiveTab = (Tab, TabContent1, TabContent2, TabContent3) => {
       return (
         <div className="movie-card__desc">
           <nav className="movie-nav movie-card__nav">
-            <Tab {...this.props} tabToShow={this.state.tabToShow} onTabClick={this.tabClickHandle} />
+            <Tab {...this.props} tabToShow={this.state.tabToShow} onTabClick={this.handleTabClick} />
           </nav>
           {this.state.tabToShow === tabNames[0] && <TabContent1 {...this.props} />}
           {(this.state.tabToShow === tabNames[1] && TabContent2) && <TabContent2 {...this.props} />}

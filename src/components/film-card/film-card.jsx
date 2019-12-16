@@ -19,7 +19,7 @@ export const FilmCard = (props) => {
     name
   } = film;
 
-  const cardClickHandler = () => {
+  const handleCardClick = () => {
     onCardClick(id);
   };
 
@@ -29,7 +29,7 @@ export const FilmCard = (props) => {
       onMouseLeave={onMouseLeave}
       className="small-movie-card catalog__movies-card"
     >
-      <Link to={`${URL.FILMS_URL}/${film.id}`} onClick={cardClickHandler}>
+      <Link to={`${URL.FILMS_URL}/${film.id}`} onClick={handleCardClick}>
         <div className="small-movie-card__image">
           {isPlaying
             ? (

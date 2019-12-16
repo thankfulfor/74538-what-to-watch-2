@@ -12,9 +12,9 @@ const userDataEmailExpected = `email`;
 const userDataPasswordExpected = `password`;
 
 it(`Компонент SignIn корректно обрабатывает onSignInFormSubmit`, () => {
-  const submitHandler = jest.fn();
+  const handleSubmit = jest.fn();
   const historyMock = {push: jest.fn(), goBack: jest.fn()};
-  const signIn = shallow(<SignIn userData={{}} history={historyMock} onSignInFormSubmit={submitHandler} />);
+  const signIn = shallow(<SignIn userData={{}} history={historyMock} onSignInFormSubmit={handleSubmit} />);
 
   signIn.find(`form`).simulate(`submit`, {
     preventDefault: () => {},
@@ -28,5 +28,5 @@ it(`Компонент SignIn корректно обрабатывает onSign
     },
   });
 
-  expect(submitHandler).toHaveBeenCalledWith(userDataEmailExpected, userDataPasswordExpected);
+  expect(handleSubmit).toHaveBeenCalledWith(userDataEmailExpected, userDataPasswordExpected);
 });

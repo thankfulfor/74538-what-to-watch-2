@@ -9,12 +9,12 @@ const genres = [`All genres`];
 const genre = `All genres`;
 
 it(`Компонент GenreTab корректно обрабатывает onTabClick`, () => {
-  const clickHandler = jest.fn();
+  const handleClick = jest.fn();
   const genreTab = shallow(
       <GenreTab
         genre={genre}
         genres={genres}
-        onTabClick={clickHandler}
+        onTabClick={handleClick}
       />
   );
 
@@ -26,5 +26,5 @@ it(`Компонент GenreTab корректно обрабатывает onTa
     }
   }));
 
-  expect(clickHandler).toHaveBeenCalledWith(genres);
+  expect(handleClick).toHaveBeenCalledWith(genres);
 });

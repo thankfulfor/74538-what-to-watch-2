@@ -16,7 +16,7 @@ const genres = [`All genres`];
 Enzyme.configure({adapter: new Adapter()});
 
 it(`GenreList рендерится корректно`, () => {
-  const clickHandler = jest.fn();
+  const handleClick = jest.fn();
 
   const tree = shallow(
       <GenreList
@@ -26,7 +26,7 @@ it(`GenreList рендерится корректно`, () => {
         countGenres={0}
         filteredFilms={films}
         genre={genres[0]}
-        onShowMoreButtonClick={clickHandler}
+        onShowMoreButtonClick={handleClick}
       />);
 
   expect(toJson(tree)).toMatchSnapshot();
